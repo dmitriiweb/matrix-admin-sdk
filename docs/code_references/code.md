@@ -13,6 +13,8 @@
 ### BackgroundUpdates
 ::: matrix_admin_sdk.endpoints.background_updates.BackgroundUpdates
 
+### DeleteGroup
+::: matrix_admin_sdk.endpoints.delete_group.DeleteGroup
 
 ## Models
 
