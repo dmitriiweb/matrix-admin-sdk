@@ -11,12 +11,12 @@ class Response(Protocol):
 
 class HttpClient(Protocol):
     async def get(
-        self, url: str, headers: Dict[str, str], params: Optional[Dict[str, str]] = None
+        self, url: str, headers: Dict[str, Any], params: Optional[Dict[str, str]] = None
     ) -> Response:
         ...
 
     async def post(
-        self, url: str, data: Dict[str, str], headers: Dict[str, str]
+        self, url: str, data: Dict[str, Any], headers: Dict[str, str]
     ) -> Response:
         ...
 
@@ -34,9 +34,9 @@ class MatrixAdminClient:
             access_token: admin access token, see https://webapps.stackexchange.com/questions/131056/how-to-get-an-access-token-for-element-riot-matrix
             server_url: matrix server url, e.g. https://matrix.org
         """
-        self.http_client = http_client
+        self._http_client = http_client
         self._access_token = access_token
-        self.base_url = server_url
+        self._base_url = server_url
 
     @property
     def access_token(self) -> str:
@@ -51,13 +51,15 @@ class MatrixAdminClient:
         return {"Authorization": self.access_token}
 
     async def get(
-        self, endpoint: str, params: Optional[Dict[str, str]] = None
+        self, endpoint: str, params: Optional[Dict[str, Any]] = None
     ) -> Response:
-        url = f"{self.base_url}{endpoint}"
-        return await self.http_client.get(
+        url = f"{self._base_url}{endpoint}"
+        return await self._http_client.get(
             url, params=params, headers=self.request_headers
         )
 
-    async def post(self, endpoint: str, data: Dict[str, str]) -> Response:
-        url = f"{self.base_url}{endpoint}"
-        return await self.http_client.post(url, data=data, headers=self.request_headers)
+    async def post(self, endpoint: str, data: Dict[str, Any]) -> Response:
+        url = f"{self._base_url}{endpoint}"
+        return await self._http_client.post(
+            url, data=data, headers=self.request_headers
+        )
