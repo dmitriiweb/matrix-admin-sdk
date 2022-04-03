@@ -29,3 +29,9 @@
 ::: matrix_admin_sdk.models.background_updates.StatusModel
 ::: matrix_admin_sdk.models.background_updates.CurrentUpdate
 ::: matrix_admin_sdk.models.background_updates.EnabledModel
+
+### Event Reports
+#### EventReport
+::: matrix_admin_sdk.models.event_reports.EventReport
+#### EventReports
+::: matrix_admin_sdk.models.event_reports.EventReports
