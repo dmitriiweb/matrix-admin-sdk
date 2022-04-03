@@ -52,4 +52,4 @@ markdown_extensions:
    - pymdownx.tilde
 
 nav:
-  - Template Project Python: index.md
+  - Matrix Admin SDK: index.md

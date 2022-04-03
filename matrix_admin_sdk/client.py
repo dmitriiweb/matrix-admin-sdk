@@ -1,4 +1,5 @@
 from typing import Any, Dict, Optional, Protocol
+from urllib.parse import urljoin
 
 
 class Response(Protocol):
@@ -53,13 +54,13 @@ class MatrixAdminClient:
     async def get(
         self, endpoint: str, params: Optional[Dict[str, Any]] = None
     ) -> Response:
-        url = f"{self._base_url}{endpoint}"
+        url = urljoin(self._base_url, endpoint)
         return await self._http_client.get(
             url, params=params, headers=self.request_headers
         )
 
     async def post(self, endpoint: str, data: Dict[str, Any]) -> Response:
-        url = f"{self._base_url}{endpoint}"
+        url = urljoin(self._base_url, endpoint)
         return await self._http_client.post(
             url, data=data, headers=self.request_headers
         )
