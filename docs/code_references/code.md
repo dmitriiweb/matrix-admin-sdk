@@ -16,6 +16,9 @@
 ### DeleteGroup
 ::: matrix_admin_sdk.endpoints.delete_group.DeleteGroup
 
+### EventReports
+::: matrix_admin_sdk.endpoints.event_reports.EventReports
+
 ## Models
 
 ### Account Validity
@@ -35,3 +38,4 @@
 ::: matrix_admin_sdk.models.event_reports.EventReport
 #### EventReports
 ::: matrix_admin_sdk.models.event_reports.EventReports
+::: matrix_admin_sdk.models.event_reports.EventDetails

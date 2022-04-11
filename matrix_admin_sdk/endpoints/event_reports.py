@@ -1,5 +1,6 @@
 from typing import Optional
 
+from matrix_admin_sdk.models.event_reports import EventDetails
 from matrix_admin_sdk.models.event_reports import EventReports as EventReportsModel
 
 from .endpoint import Endpoint
@@ -42,3 +43,16 @@ class EventReports(Endpoint):
         }
         response = await self.admin_client.get(url, params=params)
         return EventReportsModel.from_dict(response.json())
+
+    async def show_details(self, report_id: str) -> EventDetails:
+        """
+        This API returns information about a specific event report.
+        Args:
+            report_id: The ID of the event report
+
+        Returns: event details
+
+        """
+        url = f"/_synapse/admin/v1/event_reports/{report_id}"
+        resource = await self.admin_client.get(url)
+        return EventDetails.from_dict(resource.json())
