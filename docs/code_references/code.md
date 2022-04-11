@@ -19,6 +19,9 @@
 ### EventReports
 ::: matrix_admin_sdk.endpoints.event_reports.EventReports
 
+### QueryingMedia
+::: matrix_admin_sdk.endpoints.querying_media.QueryingMedia
+
 ## Models
 
 ### Account Validity
@@ -39,3 +42,6 @@
 #### EventReports
 ::: matrix_admin_sdk.models.event_reports.EventReports
 ::: matrix_admin_sdk.models.event_reports.EventDetails
+
+### QueryingMediaModel
+::: matrix_admin_sdk.models.querying_media.QueryingMediaModel
