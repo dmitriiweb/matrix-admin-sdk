@@ -40,6 +40,9 @@
 ### EditRoomMembership
 ::: matrix_admin_sdk.endpoints.edit_room_membership.EditRoomMembership
 
+### Rooms
+::: matrix_admin_sdk.endpoints.rooms.Rooms
+
 ## Models
 
 ### Account Validity
@@ -72,3 +75,10 @@
 
 ### RegistrationTokensModel
 ::: matrix_admin_sdk.models.registration_tokens.RegistrationTokensModel
+
+### Rooms
+#### Rooms
+::: matrix_admin_sdk.models.rooms.Rooms
+#### Room
+::: matrix_admin_sdk.models.rooms.Room
+

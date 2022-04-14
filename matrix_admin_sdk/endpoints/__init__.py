@@ -10,3 +10,4 @@ from .quarantine_media import QuarantineMedia
 from .querying_media import QueryingMedia
 from .register_user import RegisterUsers
 from .registration_tokens import RegistrationTokens
+from .rooms import Rooms
