@@ -2,6 +2,7 @@ from .account_validity import AccountValidity
 from .background_updates import BackgroundUpdates
 from .delete_group import DeleteGroup
 from .delete_local_media import DeleteLocalMedia
+from .edit_room_membership import EditRoomMembership
 from .event_reports import EventReports
 from .purge_history import PurgeHistory
 from .purge_remote_media import PurgeRemoteMedia

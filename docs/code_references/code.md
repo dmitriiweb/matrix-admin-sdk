@@ -37,6 +37,9 @@
 ### RegistrationTokens
 ::: matrix_admin_sdk.endpoints.registration_tokens.RegistrationTokens
 
+### EditRoomMembership
+::: matrix_admin_sdk.endpoints.edit_room_membership.EditRoomMembership
+
 ## Models
 
 ### Account Validity
