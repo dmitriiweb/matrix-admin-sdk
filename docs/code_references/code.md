@@ -28,6 +28,9 @@
 ### DeleteLocalMedia
 ::: matrix_admin_sdk.endpoints.delete_local_media.DeleteLocalMedia
 
+### PurgeRemoteMedia
+::: matrix_admin_sdk.endpoints.purge_remote_media.PurgeRemoteMedia
+
 ## Models
 
 ### Account Validity
