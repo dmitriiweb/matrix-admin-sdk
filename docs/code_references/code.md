@@ -31,6 +31,9 @@
 ### PurgeRemoteMedia
 ::: matrix_admin_sdk.endpoints.purge_remote_media.PurgeRemoteMedia
 
+### PurgeHistory
+::: matrix_admin_sdk.endpoints.purge_history.PurgeHistory
+
 ## Models
 
 ### Account Validity

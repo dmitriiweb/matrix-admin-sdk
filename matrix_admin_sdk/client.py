@@ -12,17 +12,17 @@ class Response(Protocol):
 
 class HttpClient(Protocol):
     async def get(
-        self, url: str, headers: Dict[str, Any], params: Optional[Dict[str, str]] = None
+        self, url: str, headers: Dict[str, Any], params: Optional[Dict[str, Any]] = None
     ) -> Response:
         ...
 
     async def post(
-        self, url: str, data: Dict[str, Any], headers: Dict[str, str]
+        self, url: str, data: Dict[str, Any], headers: Dict[str, Any]
     ) -> Response:
         ...
 
     async def delete(
-        self, url: str, data: Dict[str, Any], headers: Dict[str, str]
+        self, url: str, data: Dict[str, Any], headers: Dict[str, Any]
     ) -> Response:
         ...
 
