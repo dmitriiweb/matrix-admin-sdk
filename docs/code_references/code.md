@@ -60,3 +60,6 @@
 
 ### DeleteLocalMediaModel
 ::: matrix_admin_sdk.models.delete_local_media.DeleteLocalMediaModel
+
+### NewUserModel
+::: matrix_admin_sdk.models.register_user.NewUserModel
