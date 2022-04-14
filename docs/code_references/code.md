@@ -25,6 +25,9 @@
 ### QuarantineMedia
 ::: matrix_admin_sdk.endpoints.quarantine_media.QuarantineMedia
 
+### DeleteLocalMedia
+::: matrix_admin_sdk.endpoints.delete_local_media.DeleteLocalMedia
+
 ## Models
 
 ### Account Validity
@@ -48,3 +51,6 @@
 
 ### QueryingMediaModel
 ::: matrix_admin_sdk.models.querying_media.QueryingMediaModel
+
+### DeleteLocalMediaModel
+::: matrix_admin_sdk.models.delete_local_media.DeleteLocalMediaModel
