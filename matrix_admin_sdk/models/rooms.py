@@ -62,8 +62,18 @@ class RoomsModel:
     prev_batch: Optional[str] = None
 
     @classmethod
-    def from_dict(cls, data: Dict[str, Any]) -> "RoomsModel":  # type: ignore
+    def from_dict(cls, data: Dict[str, Any]) -> "RoomsModel":
         data = data.copy()
         rooms = [RoomModel.from_dict(room) for room in data["rooms"]]
         del data["rooms"]
         return cls(**data, rooms=rooms)
+
+
+@dataclass
+class RoomMembersModel:
+    members: List[str]
+    total: int
+
+    @classmethod
+    def from_dict(cls, data: Dict[str, Any]) -> "RoomMembersModel":
+        return cls(**data)

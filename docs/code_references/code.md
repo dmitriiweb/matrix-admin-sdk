@@ -81,4 +81,6 @@
 ::: matrix_admin_sdk.models.rooms.Rooms
 #### Room
 ::: matrix_admin_sdk.models.rooms.Room
+#### RoomMembers
+::: matrix_admin_sdk.models.rooms.RoomMembersModel
 

@@ -1,7 +1,7 @@
 from enum import Enum
 from typing import Optional
 
-from matrix_admin_sdk.models.rooms import RoomsModel
+from matrix_admin_sdk.models.rooms import RoomMembersModel, RoomModel, RoomsModel
 
 from .endpoint import Endpoint
 
@@ -92,3 +92,30 @@ class Rooms(Endpoint):
 
         response = await self.admin_client.get(url, params=params)
         return RoomsModel.from_dict(response.json())
+
+    async def room_details(self, room_id: str) -> RoomModel:
+        """
+        The Room Details admin API allows server admins to get all details of a room.
+        Args:
+            room_id: The room id to get details for.
+
+        Returns:
+
+        """
+        url = f"/_synapse/admin/v1/rooms/{room_id}"
+        response = await self.admin_client.get(url)
+        return RoomModel.from_dict(response.json())
+
+    async def room_members(self, room_id: str) -> RoomMembersModel:
+        """
+        The Room Members admin API allows server admins to get a list of all
+        members of a room.
+        Args:
+            room_id: The room id to get details for.
+
+        Returns: RoomMembersModel
+
+        """
+        url = f"/_synapse/admin/v1/rooms/{room_id}/members"
+        response = await self.admin_client.get(url)
+        return RoomMembersModel.from_dict(response.json())
