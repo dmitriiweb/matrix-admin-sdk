@@ -49,7 +49,7 @@ class QuarantineMedia(Endpoint):
 
         Returns: {"num_quarantined": 10}
         """
-        url = f"/_synapse/admin/v1/room/<room_id>/media/quarantine"
+        url = f"/_synapse/admin/v1/room/{room_id}/media/quarantine"
         response = await self.admin_client.post(url, {})
         return response.json()
 
