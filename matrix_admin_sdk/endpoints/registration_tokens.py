@@ -79,7 +79,7 @@ class RegistrationTokens(Endpoint):
         if length < 1 or length > 64:
             raise ValueError("length must be between 1 and 64 inclusive")
 
-        url = f"/_synapse/admin/v1/registration_tokens/new"
+        url = "/_synapse/admin/v1/registration_tokens/new"
         data = {
             "token": token,
             "uses_allowed": uses_allowed,
