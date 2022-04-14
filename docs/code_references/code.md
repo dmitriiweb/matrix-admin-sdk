@@ -22,6 +22,9 @@
 ### QueryingMedia
 ::: matrix_admin_sdk.endpoints.querying_media.QueryingMedia
 
+### QuarantineMedia
+::: matrix_admin_sdk.endpoints.quarantine_media.QuarantineMedia
+
 ## Models
 
 ### Account Validity
