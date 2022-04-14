@@ -8,3 +8,4 @@ from .purge_remote_media import PurgeRemoteMedia
 from .quarantine_media import QuarantineMedia
 from .querying_media import QueryingMedia
 from .register_user import RegisterUsers
+from .registration_tokens import RegistrationTokens

@@ -34,6 +34,9 @@
 ### PurgeHistory
 ::: matrix_admin_sdk.endpoints.purge_history.PurgeHistory
 
+### RegistrationTokens
+::: matrix_admin_sdk.endpoints.registration_tokens.RegistrationTokens
+
 ## Models
 
 ### Account Validity
@@ -63,3 +66,6 @@
 
 ### NewUserModel
 ::: matrix_admin_sdk.models.register_user.NewUserModel
+
+### RegistrationTokensModel
+::: matrix_admin_sdk.models.registration_tokens.RegistrationTokensModel
