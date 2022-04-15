@@ -1,8 +1,15 @@
-from enum import Enum, auto
+import enum
+
 from typing import Any, Awaitable, Callable, Dict, Protocol
 from urllib.parse import urljoin
 
 from matrix_admin_sdk import MatrixAdminClient
+
+
+class MatrixAdminSdkError(Exception):
+    def __init__(self, error: str, http_status_code: int):
+        message = f"{error} {http_status_code=}"
+        super().__init__(message)
 
 
 class Response(Protocol):
@@ -13,11 +20,11 @@ class Response(Protocol):
         ...
 
 
-class RequestMethods(Enum):
-    GET = auto()
-    POST = auto()
-    PUT = auto()
-    DELETE = auto()
+class RequestMethods(enum.Enum):
+    GET = enum.auto()
+    POST = enum.auto()
+    PUT = enum.auto()
+    DELETE = enum.auto()
 
 
 RequestFunc = Callable[..., Awaitable[Response]]
@@ -52,4 +59,16 @@ class Endpoint:
         }
         req = methods[method]
         response = await req(url, **kwargs)
+        self.error_check(response)
         return response.json()
+
+    @staticmethod
+    def error_check(response: Response) -> None:
+        if response.status_code < 300:
+            return
+        try:
+            error = response.json()["error"]
+        except (KeyError, TypeError):
+            error = "Unknown error"
+
+        raise MatrixAdminSdkError(error, response.status_code)

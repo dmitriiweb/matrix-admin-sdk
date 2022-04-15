@@ -2,13 +2,7 @@ from typing import Any, Dict, List, Optional
 
 from matrix_admin_sdk.models.registration_tokens import RegistrationTokensModel
 
-from .endpoint import Endpoint
-
-
-class MatrixAdminSdkErrorRegistrationTokens(Exception):
-    def __init__(self, code: str, error: str, http_status_code: int):
-        message = f"{code}: {error} {http_status_code=}"
-        super().__init__(message)
+from .endpoint import Endpoint, RequestMethods
 
 
 class RegistrationTokens(Endpoint):
@@ -26,14 +20,11 @@ class RegistrationTokens(Endpoint):
         url = self.url("registration_tokens")
         params = {"valid": valid}
 
-        response = await self.admin_client.get(url, params=params)
-        res = response.json()
-        self._is_error(res, response.status_code)
-
-        result: List[RegistrationTokensModel] = [
-            RegistrationTokensModel.from_dict(d) for d in res["registration_tokens"]
+        result = await self.request(RequestMethods.GET, url, params=params)
+        res: List[RegistrationTokensModel] = [
+            RegistrationTokensModel.from_dict(d) for d in result["registration_tokens"]
         ]
-        return result
+        return res
 
     async def get_one_token(self, token: str) -> RegistrationTokensModel:
         """
@@ -46,11 +37,9 @@ class RegistrationTokens(Endpoint):
 
         """
         url = self.url(f"registration_tokens/{token}")
-        response = await self.admin_client.get(url)
-        res = response.json()
-        self._is_error(res, response.status_code)
-        result: RegistrationTokensModel = RegistrationTokensModel.from_dict(res)
-        return result
+        result = await self.request(RequestMethods.GET, url)
+        res: RegistrationTokensModel = RegistrationTokensModel.from_dict(result)
+        return res
 
     async def create_token(
         self,
@@ -90,12 +79,9 @@ class RegistrationTokens(Endpoint):
             "expiry_time": expiry_time,
             "length": length,
         }
-        response = await self.admin_client.post(url, data=data)
-        res = response.json()
-        self._is_error(res, response.status_code)
-
-        result: RegistrationTokensModel = RegistrationTokensModel.from_dict(res)
-        return result
+        result = await self.request(RequestMethods.POST, url, data=data)
+        res: RegistrationTokensModel = RegistrationTokensModel.from_dict(result)
+        return res
 
     async def update_token(
         self,
@@ -124,11 +110,9 @@ class RegistrationTokens(Endpoint):
         """
         url = self.url(f"registration_tokens/{token}")
         data = {"uses_allowed": uses_allowed, "expiry_time": expiry_time}
-        response = await self.admin_client.put(url, data=data)
-        res = response.json()
-        self._is_error(res, response.status_code)
-        result: RegistrationTokensModel = RegistrationTokensModel(**res)
-        return result
+        result = await self.request(RequestMethods.PUT, url, data=data)
+        res: RegistrationTokensModel = RegistrationTokensModel.from_dict(result)
+        return res
 
     async def delete_token(self, token: str) -> Dict[Any, Any]:
         """
@@ -140,16 +124,5 @@ class RegistrationTokens(Endpoint):
 
         """
         url = self.url(f"registration_tokens/{token}")
-        response = await self.admin_client.delete(url, data={})
-        res = response.json()
-        self._is_error(res, response.status_code)
-        return res
-
-    def _is_error(self, res: Dict[str, Any], status_code: int) -> None:
-        if "error" not in res:
-            return
-        message = res["error"]
-        code = res["errcode"]
-        raise MatrixAdminSdkErrorRegistrationTokens(
-            code, message, http_status_code=status_code
-        )
+        result = await self.request(RequestMethods.DELETE, url)
+        return result
