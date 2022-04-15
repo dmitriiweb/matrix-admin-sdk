@@ -26,10 +26,6 @@ class CurrentUpdate(BaseModel):
     total_duration_ms: float
     average_items_per_ms: float
 
-    @classmethod
-    def from_dict(cls, db_name: str, d: Dict[str, Any]) -> "CurrentUpdate":
-        return cls(db_name=db_name, **d)
-
 
 @dataclass
 class StatusModel(BaseModel):
@@ -45,9 +41,10 @@ class StatusModel(BaseModel):
 
     @classmethod
     def from_dict(cls, data: Dict[str, Any]) -> "StatusModel":
-        current_updates = [
-            CurrentUpdate.from_dict(k, v) for k, v in data["current_updates"].items()
-        ]
+        current_updates = []
+        for k, v in data["current_updates"].items():
+            v["db_name"] = k
+            current_updates.append(CurrentUpdate.from_dict(v))
         return cls(enabled=data["enabled"], current_updates=current_updates)
 
 

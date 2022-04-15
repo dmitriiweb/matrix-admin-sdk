@@ -5,7 +5,7 @@ from .base_model import BaseModel
 
 
 @dataclass
-class RegistrationTokensModel:
+class RegistrationTokensModel(BaseModel):
     """
     Most endpoints make use of JSON objects that contain details about tokens.
     These objects have the following fields
