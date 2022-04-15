@@ -11,19 +11,19 @@ class OrderBy(Enum):
     Enum for the order by parameter
 
     Attributes:
-        name - Rooms are ordered alphabetically by room name. This is the default.
-        canonical_alias - Rooms are ordered alphabetically by main alias address of the room.
-        joined_members - Rooms are ordered by the number of members. Largest to smallest.
-        joined_local_members - Rooms are ordered by the number of local members. Largest to smallest.
-        version - Rooms are ordered by room version. Largest to smallest.
-        creator - Rooms are ordered alphabetically by creator of the room.
-        encryption - Rooms are ordered alphabetically by the end-to-end encryption algorithm.
-        federatable - Rooms are ordered by whether the room is federatable.
-        public - Rooms are ordered by visibility in room list.
-        join_rules - Rooms are ordered alphabetically by join rules of the room.
-        guest_access - Rooms are ordered alphabetically by guest access option of the room.
-        history_visibility - Rooms are ordered alphabetically by visibility of history of the room.
-        state_events - Rooms are ordered by number of state events. Largest to smallest.
+        NAME: Rooms are ordered alphabetically by room name. This is the default.
+        CANONICAL_ALIAS: Rooms are ordered alphabetically by main alias address of the room.
+        JOINED_LOCAL_MEMBERS: Rooms are ordered by the number of members. Largest to smallest.
+        JOINED_LOCAL_MEMBERS: Rooms are ordered by the number of local members. Largest to smallest.
+        VERSION: Rooms are ordered by room version. Largest to smallest.
+        CREATOR: Rooms are ordered alphabetically by creator of the room.
+        ENCRYPTION: Rooms are ordered alphabetically by the end-to-end encryption algorithm.
+        FEDERATABLE: Rooms are ordered by whether the room is federatable.
+        PUBLIC: Rooms are ordered by visibility in room list.
+        JOIN_RULES: Rooms are ordered alphabetically by join rules of the room.
+        GUEST_ACCESS: Rooms are ordered alphabetically by guest access option of the room.
+        HISTORY_VISIBILITY: Rooms are ordered alphabetically by visibility of history of the room.
+        STATE_EVENTS: Rooms are ordered by number of state events. Largest to smallest.
     """
 
     NAME = "name"

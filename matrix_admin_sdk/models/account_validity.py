@@ -7,7 +7,6 @@ from .base_model import BaseModel
 @dataclass
 class RenewAccountModel(BaseModel):
     """
-    Renew account model
     Attributes:
         expiration_ts (int): new expiration date for this account, as a timestamp
             in milliseconds since epoch
