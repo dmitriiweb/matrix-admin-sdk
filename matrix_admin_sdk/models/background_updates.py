@@ -1,9 +1,11 @@
 from dataclasses import dataclass
 from typing import Any, Dict, List
 
+from .base_model import BaseModel
+
 
 @dataclass
-class CurrentUpdate:
+class CurrentUpdate(BaseModel):
     """
     CurrentUpdate
 
@@ -30,7 +32,7 @@ class CurrentUpdate:
 
 
 @dataclass
-class StatusModel:
+class StatusModel(BaseModel):
     """
     StatusModel
     Attributes:
@@ -42,15 +44,15 @@ class StatusModel:
     current_updates: List[CurrentUpdate]
 
     @classmethod
-    def from_dict(cls, obj: Dict[str, Any]) -> "StatusModel":
+    def from_dict(cls, data: Dict[str, Any]) -> "StatusModel":
         current_updates = [
-            CurrentUpdate.from_dict(k, v) for k, v in obj["current_updates"].items()
+            CurrentUpdate.from_dict(k, v) for k, v in data["current_updates"].items()
         ]
-        return cls(enabled=obj["enabled"], current_updates=current_updates)
+        return cls(enabled=data["enabled"], current_updates=current_updates)
 
 
 @dataclass
-class EnabledModel:
+class EnabledModel(BaseModel):
     """
     EnabledModel
 

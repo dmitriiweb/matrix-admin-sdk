@@ -1,9 +1,11 @@
 from dataclasses import dataclass
 from typing import Any, Dict, List, Optional
 
+from .base_model import BaseModel
+
 
 @dataclass
-class EventReport:
+class EventReport(BaseModel):
     """
     Event report model.
     Attributes:
@@ -32,7 +34,7 @@ class EventReport:
 
 
 @dataclass
-class EventReports:
+class EventReports(BaseModel):
     """
     List of Event Reports
     Attributes:
@@ -50,27 +52,23 @@ class EventReports:
         return cls(
             next_token=data["next_token"],
             total=data["total"],
-            event_reports=[EventReport(**i) for i in data["event_reports"]],
+            event_reports=[EventReport.from_dict(i) for i in data["event_reports"]],
         )
 
 
 @dataclass
-class EventContent:
+class EventContent(BaseModel):
     body: str
     format: str
     formatted_body: str
     msgtype: str
-
-    @classmethod
-    def from_dict(cls, data: Dict[str, str]) -> "EventContent":
-        return cls(**data)
 
 
 Signatures = Dict[str, Dict[str, str]]
 
 
 @dataclass
-class EventJson:
+class EventJson(BaseModel):
     auth_events: List[str]
     content: EventContent
     depth: int
@@ -87,6 +85,7 @@ class EventJson:
 
     @classmethod
     def from_dict(cls, data: Dict[str, Any]) -> "EventJson":
+        data = data.copy()
         content = EventContent.from_dict(data["content"])
         del data["content"]
         return cls(**data, content=content)

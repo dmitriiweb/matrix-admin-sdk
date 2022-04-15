@@ -91,7 +91,8 @@ class Rooms(Endpoint):
             params["search_term"] = search_term
 
         response = await self.admin_client.get(url, params=params)
-        return RoomsModel.from_dict(response.json())
+        res: RoomsModel = RoomsModel.from_dict(response.json())
+        return res
 
     async def room_details(self, room_id: str) -> RoomModel:
         """
@@ -104,7 +105,8 @@ class Rooms(Endpoint):
         """
         url = f"/_synapse/admin/v1/rooms/{room_id}"
         response = await self.admin_client.get(url)
-        return RoomModel.from_dict(response.json())
+        res: RoomModel = RoomModel.from_dict(response.json())
+        return res
 
     async def room_members(self, room_id: str) -> RoomMembersModel:
         """
@@ -118,4 +120,5 @@ class Rooms(Endpoint):
         """
         url = f"/_synapse/admin/v1/rooms/{room_id}/members"
         response = await self.admin_client.get(url)
-        return RoomMembersModel.from_dict(response.json())
+        res: RoomMembersModel = RoomMembersModel.from_dict(response.json())
+        return res

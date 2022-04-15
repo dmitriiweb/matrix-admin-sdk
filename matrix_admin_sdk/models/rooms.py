@@ -1,9 +1,11 @@
 from dataclasses import dataclass
 from typing import Any, Dict, List, Optional
 
+from .base_model import BaseModel
+
 
 @dataclass
-class RoomModel:
+class RoomModel(BaseModel):
     """
     Room model
     Attributes:
@@ -38,13 +40,9 @@ class RoomModel:
     history_visibility: str
     state_events: int
 
-    @classmethod
-    def from_dict(cls, data: Dict[str, Any]) -> "RoomModel":
-        return cls(**data)
-
 
 @dataclass
-class RoomsModel:
+class RoomsModel(BaseModel):
     """
     Rooms model
     Attributes:
@@ -64,16 +62,12 @@ class RoomsModel:
     @classmethod
     def from_dict(cls, data: Dict[str, Any]) -> "RoomsModel":
         data = data.copy()
-        rooms = [RoomModel.from_dict(room) for room in data["rooms"]]
+        rooms: List[RoomModel] = [RoomModel.from_dict(room) for room in data["rooms"]]
         del data["rooms"]
         return cls(**data, rooms=rooms)
 
 
 @dataclass
-class RoomMembersModel:
+class RoomMembersModel(BaseModel):
     members: List[str]
     total: int
-
-    @classmethod
-    def from_dict(cls, data: Dict[str, Any]) -> "RoomMembersModel":
-        return cls(**data)

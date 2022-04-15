@@ -1,9 +1,11 @@
 from dataclasses import dataclass
 from typing import List
 
+from .base_model import BaseModel
+
 
 @dataclass
-class QueryingMediaModel:
+class QueryingMediaModel(BaseModel):
     """
     Querying media model.
     Attributes:
