@@ -80,7 +80,7 @@ class Rooms(Endpoint):
         if dir_ not in ("f", "b"):
             raise ValueError("dir_ must be either f or b")
 
-        url = "/_synapse/admin/v1/rooms"
+        url = self.url("rooms")
         params = {
             "from": from_,
             "limit": limit,
@@ -103,7 +103,7 @@ class Rooms(Endpoint):
         Returns:
 
         """
-        url = f"/_synapse/admin/v1/rooms/{room_id}"
+        url = self.url(f"rooms/{room_id}")
         response = await self.admin_client.get(url)
         res: RoomModel = RoomModel.from_dict(response.json())
         return res
@@ -118,7 +118,7 @@ class Rooms(Endpoint):
         Returns: RoomMembersModel
 
         """
-        url = f"/_synapse/admin/v1/rooms/{room_id}/members"
+        url = self.url(f"rooms/{room_id}/members")
         response = await self.admin_client.get(url)
         res: RoomMembersModel = RoomMembersModel.from_dict(response.json())
         return res

@@ -50,7 +50,7 @@ class PurgeHistory(Endpoint):
         Returns: {"purge_id": "<opaque id>"}
 
         """
-        url = f"/_synapse/admin/v1/purge_history/{room_id}/{event_id}]"
+        url = self.url(f"purge_history/{room_id}/{event_id}")
         data: Dict[str, Any] = {
             "delete_local_events": delete_local_events,
         }
@@ -74,6 +74,6 @@ class PurgeHistory(Endpoint):
             error with the error message.
 
         """
-        url = f"/_synapse/admin/v1/purge_history_status/{purge_id}"
+        url = self.url(f"purge_history_status/{purge_id}")
         response = await self.admin_client.get(url)
         return response.json()

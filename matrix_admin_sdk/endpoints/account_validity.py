@@ -24,7 +24,7 @@ class AccountValidity(Endpoint):
 
         Returns: RenewAccountModel
         """
-        url = "/_synapse/admin/v1/account_validity/validity"
+        url = self.url("account_validity/validity")
         data = {
             "user_id": user_id,
             "expiration_ts": expiration_ts,

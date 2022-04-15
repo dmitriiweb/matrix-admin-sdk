@@ -24,7 +24,7 @@ class EditRoomMembership(Endpoint):
         Returns: {"room_id": "!636q39766251:server.com"}
 
         """
-        url = f"/_synapse/admin/v1/join/{room_id_or_alias}"
+        url = self.url(f"join/{room_id_or_alias}")
         data = {"user_id": user_id}
         response = await self.admin_client.post(url, data=data)
         return response.json()

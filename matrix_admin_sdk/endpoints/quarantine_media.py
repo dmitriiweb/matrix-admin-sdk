@@ -22,7 +22,7 @@ class QuarantineMedia(Endpoint):
 
         Returns: dictionary
         """
-        url = f"/_synapse/admin/v1/media/quarantine/{server_name}/{media_id}"
+        url = self.url(f"media/quarantine/{server_name}/{media_id}")
         response = await self.admin_client.post(url, {})
         return response.json()
 
@@ -37,7 +37,7 @@ class QuarantineMedia(Endpoint):
 
         Returns: dictionary
         """
-        url = f"/_synapse/admin/v1/media/unquarantine/{server_name}/{media_id}"
+        url = self.url(f"media/unquarantine/{server_name}/{media_id}")
         response = await self.admin_client.post(url, {})
         return response.json()
 
@@ -49,7 +49,7 @@ class QuarantineMedia(Endpoint):
 
         Returns: {"num_quarantined": 10}
         """
-        url = f"/_synapse/admin/v1/room/{room_id}/media/quarantine"
+        url = self.url(f"room/{room_id}/media/quarantine")
         response = await self.admin_client.post(url, {})
         return response.json()
 
@@ -64,7 +64,7 @@ class QuarantineMedia(Endpoint):
         Returns: {"num_quarantined": 10}
 
         """
-        url = f"/_synapse/admin/v1/user/{user_id}/media/quarantine"
+        url = self.url(f"user/{user_id}/media/quarantine")
         response = await self.admin_client.post(url, {})
         return response.json()
 
@@ -81,7 +81,7 @@ class QuarantineMedia(Endpoint):
 
         Returns: dictionary
         """
-        url = f"/_synapse/admin/v1/media/protect/{media_id}"
+        url = self.url(f"media/protect/{media_id}")
         response = await self.admin_client.post(url, {})
         return response.json()
 
@@ -98,6 +98,6 @@ class QuarantineMedia(Endpoint):
 
         Returns: dictionary
         """
-        url = f"/_synapse/admin/v1/media/unprotect/{media_id}"
+        url = self.url(f"media/unprotect/{media_id}")
         response = await self.admin_client.post(url, {})
         return response.json()

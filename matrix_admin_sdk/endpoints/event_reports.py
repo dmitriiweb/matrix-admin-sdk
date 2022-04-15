@@ -33,7 +33,7 @@ class EventReports(Endpoint):
         Returns: list of event reports
 
         """
-        url = "/_synapse/admin/v1/event_reports"
+        url = self.url("event_reports")
         params = {
             "limit": limit,
             "from": from_,
@@ -54,6 +54,6 @@ class EventReports(Endpoint):
         Returns: event details
 
         """
-        url = f"/_synapse/admin/v1/event_reports/{report_id}"
+        url = self.url(f"event_reports/{report_id}")
         resource = await self.admin_client.get(url)
         return EventDetails.from_dict(resource.json())

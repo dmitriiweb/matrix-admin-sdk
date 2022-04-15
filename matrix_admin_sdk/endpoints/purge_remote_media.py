@@ -19,6 +19,6 @@ class PurgeRemoteMedia(Endpoint):
         Returns:{"deleted": 10}
 
         """
-        url = f"/_synapse/admin/v1/purge_media_cache?before_ts={unix_timestamp_in_ms}"
+        url = self.url(f"purge_media_cache?before_ts={unix_timestamp_in_ms}")
         response = await self.admin_client.post(url, {})
         return response.json()

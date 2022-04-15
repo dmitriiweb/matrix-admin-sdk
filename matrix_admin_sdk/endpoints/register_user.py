@@ -19,7 +19,7 @@ class RegisterUsers(Endpoint):
 
         To fetch the nonce, you need to request one from the API
         """
-        url = "/_synapse/admin/v1/register"
+        url = self.url("register")
         response = await self.admin_client.get(url)
         nonce: str = response.json()["nonce"]
         return nonce
@@ -46,7 +46,7 @@ class RegisterUsers(Endpoint):
         Returns: new user model
 
         """
-        url = "/_synapse/admin/v1/register"
+        url = self.url("register")
         data = {
             "nonce": nonce,
             "username": username,

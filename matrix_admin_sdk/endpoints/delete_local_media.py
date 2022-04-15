@@ -24,7 +24,7 @@ class DeleteLocalMedia(Endpoint):
         Returns: DeleteLocalMediaModel
 
         """
-        url = f"/_synapse/admin/v1/media/{server_name}/{media_id}"
+        url = self.url(f"media/{server_name}/{media_id}")
         response = await self.admin_client.delete(url, {})
         return DeleteLocalMediaModel(**response.json())
 
@@ -53,9 +53,8 @@ class DeleteLocalMedia(Endpoint):
         """
         keep_profile_string = "true" if keep_profiles else "false"
 
-        url = (
-            f"/_synapse/admin/v1/media/{server_name}/delete?before_ts={before_ts}"
-            f"&size_gt={size_gt}&keep_profiles={keep_profile_string}"
+        url = self.url(
+            f"media/{server_name}/delete?before_ts={before_ts}&size_gt={size_gt}&keep_profiles={keep_profile_string}"
         )
 
         response = await self.admin_client.post(url, {})

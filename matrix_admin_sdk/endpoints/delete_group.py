@@ -14,5 +14,5 @@ class DeleteGroup(Endpoint):
         Args:
             group_id: The group ID to delete.
         """
-        url = f"/_synapse/admin/v1/delete_group/{group_id}"
+        url = self.url(f"delete_group/{group_id}")
         await self.admin_client.post(url, data={})

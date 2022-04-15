@@ -23,7 +23,7 @@ class RegistrationTokens(Endpoint):
     async def list_all_tokens(
         self, valid: Optional[bool] = None
     ) -> List[RegistrationTokensModel]:
-        url = "/_synapse/admin/v1/registration_tokens"
+        url = self.url("registration_tokens")
         params = {"valid": valid}
 
         response = await self.admin_client.get(url, params=params)
@@ -45,7 +45,7 @@ class RegistrationTokens(Endpoint):
         Returns: RegistrationTokensModel
 
         """
-        url = f"/_synapse/admin/v1/registration_tokens/{token}"
+        url = self.url(f"registration_tokens/{token}")
         response = await self.admin_client.get(url)
         res = response.json()
         self._is_error(res, response.status_code)
@@ -83,7 +83,7 @@ class RegistrationTokens(Endpoint):
         if length < 1 or length > 64:
             raise ValueError("length must be between 1 and 64 inclusive")
 
-        url = "/_synapse/admin/v1/registration_tokens/new"
+        url = self.url("registration_tokens/new")
         data = {
             "token": token,
             "uses_allowed": uses_allowed,
@@ -122,7 +122,7 @@ class RegistrationTokens(Endpoint):
         Returns: RegistrationTokensModel
 
         """
-        url = f"/_synapse/admin/v1/registration_tokens/{token}"
+        url = self.url(f"registration_tokens/{token}")
         data = {"uses_allowed": uses_allowed, "expiry_time": expiry_time}
         response = await self.admin_client.put(url, data=data)
         res = response.json()
@@ -139,7 +139,7 @@ class RegistrationTokens(Endpoint):
         Returns: Dict[Any, Any]
 
         """
-        url = f"/_synapse/admin/v1/registration_tokens/{token}"
+        url = self.url(f"registration_tokens/{token}")
         response = await self.admin_client.delete(url, data={})
         res = response.json()
         self._is_error(res, response.status_code)

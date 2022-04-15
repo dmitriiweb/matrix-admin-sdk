@@ -13,7 +13,7 @@ class BackgroundUpdates(Endpoint):
         """
         This API gets the current status of the background updates.
         """
-        url = "/_synapse/admin/v1/background_updates/status"
+        url = self.url("background_updates/status")
         response = await self.admin_client.get(url)
         return StatusModel.from_dict(response.json())
 
@@ -34,7 +34,7 @@ class BackgroundUpdates(Endpoint):
 
         Returns: The new status of the background updates.
         """
-        url = "/_synapse/admin/v1/background_updates/enabled"
+        url = self.url("background_updates/enabled")
         data = {"enabled": enabled}
         response = await self.admin_client.post(url, data=data)
         return EnabledModel(**response.json())
@@ -50,6 +50,6 @@ class BackgroundUpdates(Endpoint):
                 - "regenerate_directory":Recalculate the user directory if it is stale or out of sync.
 
         """
-        url = "/_synapse/admin/v1/background_updates/start_job"
+        url = self.url("background_updates/start_job")
         data = {"job_name": job_name}
         await self.admin_client.post(url, data=data)
