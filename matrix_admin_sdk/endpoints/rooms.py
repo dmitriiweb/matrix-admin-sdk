@@ -1,7 +1,14 @@
 from enum import Enum
-from typing import Optional
+from typing import Dict, List, Optional
 
-from matrix_admin_sdk.models.rooms import RoomMembersModel, RoomModel, RoomsModel
+from matrix_admin_sdk.models.rooms import (
+    BlockStatusModel,
+    DeletedRoomModel,
+    RoomMembersModel,
+    RoomModel,
+    RoomsModel,
+    RoomStateModel,
+)
 
 from .endpoint import Endpoint, RequestMethods
 
@@ -121,3 +128,162 @@ class Rooms(Endpoint):
         result = await self.request(RequestMethods.GET, url)
         res: RoomMembersModel = RoomMembersModel.from_dict(result)
         return res
+
+    async def room_state(self, room_id: str) -> List[RoomStateModel]:
+        """
+        The Room State admin API allows server admins to get a list of all state
+        events in a room.
+        Args:
+            room_id: room id to get state for
+
+        Returns: list of RoomStateModel
+
+        """
+        url = self.url(f"rooms/{room_id}/state")
+        result = await self.request(RequestMethods.GET, url)
+        res: List[RoomStateModel] = [
+            RoomStateModel.from_dict(i) for i in result["state"]
+        ]
+        return res
+
+    async def block_room(self, room_id: str, block: bool) -> Dict[str, bool]:
+        """
+        The Block Room admin API allows server admins to block and unblock rooms,
+        and query to see if a given room is blocked. This API can be used to
+        pre-emptively block a room, even if it's unknown to this homeserver.
+        Users will be prevented from joining a blocked room.
+        Args:
+            room_id: The room id to block.
+            block: If True the room will be blocked and if False the room will
+                be unblocked.
+
+        Returns: dictionary
+
+        """
+        url = self.url(f"rooms/{room_id}/block")
+        data = {"block": block}
+        result = await self.request(RequestMethods.PUT, url, data=data)
+        return result
+
+    async def get_block_status(self, room_id: str) -> BlockStatusModel:
+        """
+        Is room blocked
+        Args:
+            room_id: The room id to checking
+
+        Returns: BlockStatusModel
+
+        """
+        url = self.url(f"rooms/{room_id}/block")
+        result = await self.request(RequestMethods.GET, url)
+        res: BlockStatusModel = BlockStatusModel.from_dict(result)
+        return res
+
+    async def delete_room(
+        self,
+        room_id: str,
+        new_room_user_id: Optional[str] = None,
+        room_name: str = "Content Violation Notification",
+        message: str = "Sharing illegal content on this server is not permitted and rooms in violation will be blocked",
+        block: bool = False,
+        purge: bool = True,
+        force_purge: bool = False,
+    ) -> DeletedRoomModel:
+        """
+        The Delete Room admin API allows server admins to remove rooms from the
+        server and block these rooms.
+
+        Shuts down a room. Moves all local users and room aliases automatically
+        to a new room if new_room_user_id is set. Otherwise local users only
+        leave the room without any information.
+
+        The new room will be created with the user specified by the new_room_user_id
+        parameter as room administrator and will contain a message explaining
+        what happened. Users invited to the new room will have power level -10
+        by default, and thus be unable to speak.
+
+        If block is true, users will be prevented from joining the old room.
+        This option can in sync version also be used to pre-emptively block a room,
+        even if it's unknown to this homeserver. In this case, the room will be
+        blocked, and no further action will be taken. If block is false,
+        attempting to delete an unknown room is invalid and will be rejected
+        as a bad request.
+
+        This API will remove all trace of the old room from your database after
+        removing all local users. If purge is true (the default), all traces
+        of the old room will be removed from your database after removing all
+        local users. If you do not want this to happen, set purge to false.
+        Depending on the amount of history being purged, a call to the API may
+        take several minutes or longer.
+
+        The local server will only have the power to move local user and room
+        aliases to the new room. Users on other servers will be unaffected.
+
+        This version works synchronously. That means you only get the response
+        once the server has finished the action, which may take a long time.
+        If you request the same action a second time, and the server has not
+        finished the first one, the second request will block. This is fixed
+        in version 2 of this API. The parameters are the same in both APIs.
+        This API will become deprecated in the future.
+
+        Args:
+            room_id: The room id to delete
+            new_room_user_id: If set, a new room will be created with this user
+                ID as the creator and admin, and all users in the old room will be
+                moved into that room. If not set, no new room will be created and
+                the users will just be removed from the old room. The user ID must be
+                on the local server, but does not necessarily have to belong to a
+                registered user.
+            room_name: A string representing the name of the room that new users
+                will be invited to. Defaults to Content Violation Notification
+            message: A string containing the first message that will be sent as
+                new_room_user_id in the new room. Ideally this will clearly convey
+                why the original room was shut down. Defaults to Sharing illegal
+                content on this server is not permitted and rooms in violation will
+                be blocked.
+            block: If set to true, this room will be added to a blocking list,
+                preventing future attempts to join the room. Rooms can be blocked
+                even if they're not yet known to the homeserver (only with Version
+                1 of the API). Defaults to false.
+            purge: If set to true, it will remove all traces of the room from
+                your database. Defaults to true.
+            force_purge: Optional, and ignored unless purge is true. If set to
+                true, it will force a purge to go ahead even if there are local
+                users still in the room. Do not use this unless a regular purge
+                operation fails, as it could leave those users' clients in a
+                confused state.
+
+        Returns:
+
+        """
+        url = self.url(f"rooms/{room_id}")
+        data = {
+            new_room_user_id: new_room_user_id,
+            room_name: room_name,
+            message: message,
+            block: block,
+            purge: purge,
+            force_purge: force_purge,
+        }
+        result = await self.request(RequestMethods.DELETE, url, data=data)
+        res: DeletedRoomModel = DeletedRoomModel.from_dict(result)
+        return res
+
+    async def make_room_admin(self, room_id_or_alias: str, user_id: str) -> None:
+        """
+        Grants another user the highest power available to a local user who is
+        in the room. If the user is not in the room, and it is not publicly
+        joinable, then invite the user.
+
+        By default the server admin (the caller) is granted power, but another
+        user can optionally be specified
+        Args:
+            room_id_or_alias: The room id or alias to make new admin
+            user_id: The user id to make admin
+        Returns:
+
+        """
+        url = self.url(f"rooms/{room_id_or_alias}/make_room_admin")
+        data = {"user_id": user_id}
+        await self.request(RequestMethods.POST, url, data=data)
+        return None

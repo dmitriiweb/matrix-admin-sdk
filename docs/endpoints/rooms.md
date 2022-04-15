@@ -11,6 +11,12 @@
 ::: matrix_admin_sdk.models.rooms.RoomModel
 ### RoomMembersModel
 ::: matrix_admin_sdk.models.rooms.RoomMembersModel
+### RoomStateModel
+::: matrix_admin_sdk.models.rooms.RoomStateModel
+### BlockStatusModel
+::: matrix_admin_sdk.models.rooms.BlockStatusModel
+### DeletedRoomModel
+::: matrix_admin_sdk.models.rooms.DeletedRoomModel
 
 ## Other
 ### OrderBy

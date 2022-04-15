@@ -71,3 +71,41 @@ class RoomsModel(BaseModel):
 class RoomMembersModel(BaseModel):
     members: List[str]
     total: int
+
+
+@dataclass
+class RoomStateModel(BaseModel):
+    """
+    Room state model
+    Attributes
+        type (str):
+        state_key (str):
+        etc (bool):
+    """
+
+    type: str
+    state_key: str
+    etc: bool
+
+
+@dataclass
+class BlockStatusModel(BaseModel):
+    """
+    Block status model
+    Attributes:
+        block (bool): A boolean. True if the room is blocked, otherwise False
+        user_id (str): An optional string. If the room is blocked (block is True)
+            shows the user who has add the room to blocking list. Otherwise it is
+            not displayed.
+    """
+
+    block: bool
+    user_id: Optional[str] = None
+
+
+@dataclass
+class DeletedRoomModel(BaseModel):
+    kicked_users: List[str]
+    failed_to_kick_users: List[str]
+    local_aliases: List[str]
+    new_room_id: str
