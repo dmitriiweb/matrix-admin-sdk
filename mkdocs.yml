@@ -68,3 +68,4 @@ nav:
       - Register Users: endpoints/register_user.md
       - Registration Tokens: endpoints/registration_tokens.md
       - Rooms: endpoints/rooms.md
+      - Forward Extremities: endpoints/forward_extremities.md

@@ -4,6 +4,7 @@ from .delete_group import DeleteGroup
 from .delete_local_media import DeleteLocalMedia
 from .edit_room_membership import EditRoomMembership
 from .event_reports import EventReports
+from .forward_extremities import ForwardExtremities
 from .purge_history import PurgeHistory
 from .purge_remote_media import PurgeRemoteMedia
 from .quarantine_media import QuarantineMedia
