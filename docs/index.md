@@ -18,3 +18,4 @@ Async wrapper for the Matrix.org Admin API.
 - [Registration Tokens](endpoints/registration_tokens.md#Registration Tokens)
 - [Rooms](endpoints/rooms.md#Rooms)
 - [Forward Extremities](endpoints/forward_extremities.md#Forward Extremities)
+- [Server Notices](endpoints/server_notices.md#Server Notices)

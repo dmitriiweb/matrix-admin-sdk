@@ -69,3 +69,4 @@ nav:
       - Registration Tokens: endpoints/registration_tokens.md
       - Rooms: endpoints/rooms.md
       - Forward Extremities: endpoints/forward_extremities.md
+      - Server Notices: endpoints/server_notices.md
