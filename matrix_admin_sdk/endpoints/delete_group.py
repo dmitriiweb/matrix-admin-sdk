@@ -1,4 +1,4 @@
-from .endpoint import Endpoint
+from .endpoint import Endpoint, RequestMethods
 
 
 class DeleteGroup(Endpoint):
@@ -15,4 +15,4 @@ class DeleteGroup(Endpoint):
             group_id: The group ID to delete.
         """
         url = self.url(f"delete_group/{group_id}")
-        await self.admin_client.post(url, data={})
+        await self.request(RequestMethods.POST, url)

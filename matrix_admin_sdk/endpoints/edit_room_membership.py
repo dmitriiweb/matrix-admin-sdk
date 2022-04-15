@@ -1,6 +1,6 @@
 from typing import Dict
 
-from .endpoint import Endpoint
+from .endpoint import Endpoint, RequestMethods
 
 
 class EditRoomMembership(Endpoint):
@@ -26,5 +26,5 @@ class EditRoomMembership(Endpoint):
         """
         url = self.url(f"join/{room_id_or_alias}")
         data = {"user_id": user_id}
-        response = await self.admin_client.post(url, data=data)
-        return response.json()
+        result = await self.request(RequestMethods.POST, url, data=data)
+        return result

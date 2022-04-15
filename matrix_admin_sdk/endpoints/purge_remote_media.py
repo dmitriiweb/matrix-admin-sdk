@@ -1,6 +1,6 @@
 from typing import Any, Dict
 
-from .endpoint import Endpoint
+from .endpoint import Endpoint, RequestMethods
 
 
 class PurgeRemoteMedia(Endpoint):
@@ -20,5 +20,5 @@ class PurgeRemoteMedia(Endpoint):
 
         """
         url = self.url(f"purge_media_cache?before_ts={unix_timestamp_in_ms}")
-        response = await self.admin_client.post(url, {})
-        return response.json()
+        result = await self.request(RequestMethods.POST, url)
+        return result

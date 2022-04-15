@@ -1,6 +1,6 @@
 from matrix_admin_sdk.models.querying_media import QueryingMediaModel
 
-from .endpoint import Endpoint
+from .endpoint import Endpoint, RequestMethods
 
 
 class QueryingMedia(Endpoint):
@@ -23,6 +23,6 @@ class QueryingMedia(Endpoint):
 
         """
         url = self.url(f"room/{room_id}/media")
-        response = await self.admin_client.get(url)
-        res: QueryingMediaModel = QueryingMediaModel.from_dict(response.json())
+        result = await self.request(RequestMethods.GET, url)
+        res: QueryingMediaModel = QueryingMediaModel.from_dict(result)
         return res

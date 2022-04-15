@@ -1,6 +1,6 @@
 from typing import Any, Dict, Optional
 
-from .endpoint import Endpoint
+from .endpoint import Endpoint, RequestMethods
 
 
 class PurgeHistory(Endpoint):
@@ -59,9 +59,8 @@ class PurgeHistory(Endpoint):
         if purge_up_to_ts is not None:
             data["purge_up_to_ts"] = purge_up_to_ts
 
-        response = await self.admin_client.post(url, data=data)
-
-        return response.json()
+        result = await self.request(RequestMethods.POST, url, data=data)
+        return result
 
     async def purge_status_query(self, purge_id: str) -> Dict[str, str]:
         """
@@ -75,5 +74,5 @@ class PurgeHistory(Endpoint):
 
         """
         url = self.url(f"purge_history_status/{purge_id}")
-        response = await self.admin_client.get(url)
-        return response.json()
+        result = await self.request(RequestMethods.GET, url)
+        return result

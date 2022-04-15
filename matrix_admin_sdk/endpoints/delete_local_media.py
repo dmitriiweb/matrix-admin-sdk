@@ -1,6 +1,6 @@
 from matrix_admin_sdk.models.delete_local_media import DeleteLocalMediaModel
 
-from .endpoint import Endpoint
+from .endpoint import Endpoint, RequestMethods
 
 
 class DeleteLocalMedia(Endpoint):
@@ -25,8 +25,9 @@ class DeleteLocalMedia(Endpoint):
 
         """
         url = self.url(f"media/{server_name}/{media_id}")
-        response = await self.admin_client.delete(url, {})
-        return DeleteLocalMediaModel(**response.json())
+        result = await self.request(RequestMethods.DELETE, url)
+        res: DeleteLocalMediaModel = DeleteLocalMediaModel.from_dict(result)
+        return res
 
     async def local_media_by_date_or_size(
         self,
@@ -57,5 +58,5 @@ class DeleteLocalMedia(Endpoint):
             f"media/{server_name}/delete?before_ts={before_ts}&size_gt={size_gt}&keep_profiles={keep_profile_string}"
         )
 
-        response = await self.admin_client.post(url, {})
-        return DeleteLocalMediaModel(**response.json())
+        result = await self.request(RequestMethods.POST, url)
+        return DeleteLocalMediaModel.from_dict(result)

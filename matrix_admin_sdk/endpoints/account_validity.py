@@ -1,6 +1,6 @@
 from matrix_admin_sdk.models.account_validity import RenewAccountModel
 
-from .endpoint import Endpoint
+from .endpoint import Endpoint, RequestMethods
 
 
 class AccountValidity(Endpoint):
@@ -30,5 +30,6 @@ class AccountValidity(Endpoint):
             "expiration_ts": expiration_ts,
             "enable_renewal_emails": enable_renewal_emails,
         }
-        response = await self.admin_client.post(url, data=data)
-        return RenewAccountModel(**response.json())
+        response = await self.request(RequestMethods.POST, url, data=data)
+        res: RenewAccountModel = RenewAccountModel.from_dict(response)
+        return res

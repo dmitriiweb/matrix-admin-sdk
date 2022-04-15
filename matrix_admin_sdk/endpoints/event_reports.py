@@ -3,7 +3,7 @@ from typing import Optional
 from matrix_admin_sdk.models.event_reports import EventDetails
 from matrix_admin_sdk.models.event_reports import EventReports as EventReportsModel
 
-from .endpoint import Endpoint
+from .endpoint import Endpoint, RequestMethods
 
 
 class EventReports(Endpoint):
@@ -41,9 +41,8 @@ class EventReports(Endpoint):
             "user_id": user_id,
             "room_id": room_id,
         }
-        response = await self.admin_client.get(url, params=params)
-        res: EventReportsModel = EventReportsModel.from_dict(response.json())
-        return res
+        result = await self.request(RequestMethods.GET, url, params=params)
+        return EventReportsModel.from_dict(result)
 
     async def show_details(self, report_id: str) -> EventDetails:
         """
@@ -55,5 +54,5 @@ class EventReports(Endpoint):
 
         """
         url = self.url(f"event_reports/{report_id}")
-        resource = await self.admin_client.get(url)
-        return EventDetails.from_dict(resource.json())
+        result = await self.request(RequestMethods.GET, url)
+        return EventDetails.from_dict(result)

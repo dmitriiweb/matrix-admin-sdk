@@ -1,6 +1,6 @@
 from typing import Any, Dict
 
-from .endpoint import Endpoint
+from .endpoint import Endpoint, RequestMethods
 
 
 class QuarantineMedia(Endpoint):
@@ -23,8 +23,8 @@ class QuarantineMedia(Endpoint):
         Returns: dictionary
         """
         url = self.url(f"media/quarantine/{server_name}/{media_id}")
-        response = await self.admin_client.post(url, {})
-        return response.json()
+        result = await self.request(RequestMethods.POST, url)
+        return result
 
     async def remove_media_from_quarantine_by_id(
         self, server_name: str, media_id: str
@@ -38,8 +38,8 @@ class QuarantineMedia(Endpoint):
         Returns: dictionary
         """
         url = self.url(f"media/unquarantine/{server_name}/{media_id}")
-        response = await self.admin_client.post(url, {})
-        return response.json()
+        result = await self.request(RequestMethods.POST, url)
+        return result
 
     async def quarantining_media_in_room(self, room_id) -> Dict[str, int]:
         """
@@ -50,8 +50,8 @@ class QuarantineMedia(Endpoint):
         Returns: {"num_quarantined": 10}
         """
         url = self.url(f"room/{room_id}/media/quarantine")
-        response = await self.admin_client.post(url, {})
-        return response.json()
+        result = await self.request(RequestMethods.POST, url)
+        return result
 
     async def quarantining_all_media_of_user(self, user_id: str) -> Dict[str, int]:
         """
@@ -65,8 +65,8 @@ class QuarantineMedia(Endpoint):
 
         """
         url = self.url(f"user/{user_id}/media/quarantine")
-        response = await self.admin_client.post(url, {})
-        return response.json()
+        result = await self.request(RequestMethods.POST, url)
+        return result
 
     async def protecting_media_from_being_quarantined(
         self, media_id: str
@@ -82,8 +82,8 @@ class QuarantineMedia(Endpoint):
         Returns: dictionary
         """
         url = self.url(f"media/protect/{media_id}")
-        response = await self.admin_client.post(url, {})
-        return response.json()
+        result = await self.request(RequestMethods.POST, url)
+        return result
 
     async def unprotecting_media_from_being_quarantined(
         self, media_id: str
@@ -99,5 +99,5 @@ class QuarantineMedia(Endpoint):
         Returns: dictionary
         """
         url = self.url(f"media/unprotect/{media_id}")
-        response = await self.admin_client.post(url, {})
-        return response.json()
+        result = await self.request(RequestMethods.POST, url)
+        return result

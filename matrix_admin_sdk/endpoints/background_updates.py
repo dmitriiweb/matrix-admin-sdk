@@ -1,6 +1,6 @@
 from matrix_admin_sdk.models.background_updates import EnabledModel, StatusModel
 
-from .endpoint import Endpoint
+from .endpoint import Endpoint, RequestMethods
 
 
 class BackgroundUpdates(Endpoint):
@@ -14,8 +14,8 @@ class BackgroundUpdates(Endpoint):
         This API gets the current status of the background updates.
         """
         url = self.url("background_updates/status")
-        response = await self.admin_client.get(url)
-        return StatusModel.from_dict(response.json())
+        result = await self.request(RequestMethods.GET, url)
+        return StatusModel.from_dict(result)
 
     async def enabled(self, enabled: bool) -> EnabledModel:
         """
@@ -36,8 +36,9 @@ class BackgroundUpdates(Endpoint):
         """
         url = self.url("background_updates/enabled")
         data = {"enabled": enabled}
-        response = await self.admin_client.post(url, data=data)
-        return EnabledModel(**response.json())
+        result = await self.request(RequestMethods.POST, url, data=data)
+        res: EnabledModel = EnabledModel.from_dict(result)
+        return res
 
     async def run(self, job_name: str) -> None:
         """
@@ -52,4 +53,4 @@ class BackgroundUpdates(Endpoint):
         """
         url = self.url("background_updates/start_job")
         data = {"job_name": job_name}
-        await self.admin_client.post(url, data=data)
+        await self.request(RequestMethods.POST, url, data=data)

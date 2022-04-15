@@ -1,6 +1,6 @@
 from matrix_admin_sdk.models.register_user import NewUserModel
 
-from .endpoint import Endpoint
+from .endpoint import Endpoint, RequestMethods
 
 
 class RegisterUsers(Endpoint):
@@ -20,8 +20,8 @@ class RegisterUsers(Endpoint):
         To fetch the nonce, you need to request one from the API
         """
         url = self.url("register")
-        response = await self.admin_client.get(url)
-        nonce: str = response.json()["nonce"]
+        result = await self.request(RequestMethods.GET, url)
+        nonce: str = result["nonce"]
         return nonce
 
     async def register(
@@ -55,6 +55,6 @@ class RegisterUsers(Endpoint):
             "admin": admin,
             "mac": mac,
         }
-        response = await self.admin_client.post(url, data=data)
-        res: NewUserModel = NewUserModel.from_dict(response.json())
+        result = await self.request(RequestMethods.POST, url, data=data)
+        res: NewUserModel = NewUserModel.from_dict(result)
         return res

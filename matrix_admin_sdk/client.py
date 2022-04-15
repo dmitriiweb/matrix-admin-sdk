@@ -62,25 +62,25 @@ class MatrixAdminClient:
         return {"Authorization": self.access_token}
 
     async def get(
-        self, endpoint: str, params: Optional[Dict[str, Any]] = None
+        self, /, endpoint: str, *, params: Optional[Dict[str, Any]] = None
     ) -> Response:
         url = urljoin(self._base_url, endpoint)
         return await self._http_client.get(
             url, params=params, headers=self.request_headers
         )
 
-    async def post(self, endpoint: str, data: Dict[str, Any]) -> Response:
+    async def post(self, /, endpoint: str, *, data: Dict[str, Any]) -> Response:
         url = urljoin(self._base_url, endpoint)
         return await self._http_client.post(
             url, data=data, headers=self.request_headers
         )
 
-    async def delete(self, endpoint: str, data: Dict[str, Any]) -> Response:
+    async def delete(self, /, endpoint: str, *, data: Dict[str, Any]) -> Response:
         url = urljoin(self._base_url, endpoint)
         return await self._http_client.delete(
             url, data=data, headers=self.request_headers
         )
 
-    async def put(self, endpoint: str, data: Dict[str, Any]) -> Response:
+    async def put(self, /, endpoint: str, *, data: Dict[str, Any]) -> Response:
         url = urljoin(self._base_url, endpoint)
         return await self._http_client.put(url, data=data, headers=self.request_headers)
