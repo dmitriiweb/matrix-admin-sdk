@@ -24,4 +24,5 @@ class QueryingMedia(Endpoint):
         """
         url = f"/_synapse/admin/v1/room/{room_id}/media"
         response = await self.admin_client.get(url)
-        return QueryingMediaModel(**response.json())
+        res: QueryingMediaModel = QueryingMediaModel.from_dict(response.json())
+        return res

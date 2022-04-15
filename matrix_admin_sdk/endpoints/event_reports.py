@@ -42,7 +42,8 @@ class EventReports(Endpoint):
             "room_id": room_id,
         }
         response = await self.admin_client.get(url, params=params)
-        return EventReportsModel.from_dict(response.json())
+        res: EventReportsModel = EventReportsModel.from_dict(response.json())
+        return res
 
     async def show_details(self, report_id: str) -> EventDetails:
         """

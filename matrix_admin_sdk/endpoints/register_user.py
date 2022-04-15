@@ -56,4 +56,5 @@ class RegisterUsers(Endpoint):
             "mac": mac,
         }
         response = await self.admin_client.post(url, data=data)
-        return NewUserModel(**response.json())
+        res: NewUserModel = NewUserModel.from_dict(response.json())
+        return res

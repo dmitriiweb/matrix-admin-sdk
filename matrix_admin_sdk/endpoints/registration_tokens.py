@@ -30,7 +30,10 @@ class RegistrationTokens(Endpoint):
         res = response.json()
         self._is_error(res, response.status_code)
 
-        return [RegistrationTokensModel(**d) for d in res["registration_tokens"]]
+        result: List[RegistrationTokensModel] = [
+            RegistrationTokensModel.from_dict(d) for d in res["registration_tokens"]
+        ]
+        return result
 
     async def get_one_token(self, token: str) -> RegistrationTokensModel:
         """
@@ -46,7 +49,8 @@ class RegistrationTokens(Endpoint):
         response = await self.admin_client.get(url)
         res = response.json()
         self._is_error(res, response.status_code)
-        return RegistrationTokensModel(**res)
+        result: RegistrationTokensModel = RegistrationTokensModel.from_dict(res)
+        return result
 
     async def create_token(
         self,
@@ -90,7 +94,8 @@ class RegistrationTokens(Endpoint):
         res = response.json()
         self._is_error(res, response.status_code)
 
-        return RegistrationTokensModel(**res)
+        result: RegistrationTokensModel = RegistrationTokensModel.from_dict(res)
+        return result
 
     async def update_token(
         self,
@@ -122,7 +127,8 @@ class RegistrationTokens(Endpoint):
         response = await self.admin_client.put(url, data=data)
         res = response.json()
         self._is_error(res, response.status_code)
-        return RegistrationTokensModel(**res)
+        result: RegistrationTokensModel = RegistrationTokensModel(**res)
+        return result
 
     async def delete_token(self, token: str) -> Dict[Any, Any]:
         """
