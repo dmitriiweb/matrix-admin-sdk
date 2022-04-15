@@ -1,5 +1,5 @@
 from enum import Enum
-from typing import Dict, List, Optional
+from typing import Any, Dict, List, Optional
 
 from matrix_admin_sdk.models.rooms import (
     BlockStatusModel,
@@ -287,3 +287,16 @@ class Rooms(Endpoint):
         data = {"user_id": user_id}
         await self.request(RequestMethods.POST, url, data=data)
         return None
+
+    async def event_context(self, room_id: str, event_id: str) -> Dict[str, Any]:
+        """
+        This API lets a client find the context of an event. This is designed
+        primarily to investigate abuse reports.
+        Args:
+            room_id:
+            event_id:
+
+        Returns:
+
+        """
+        raise NotImplementedError("This API is not yet implemented")
