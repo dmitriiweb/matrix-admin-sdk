@@ -1,8 +1,9 @@
 from typing import Dict, List
 
+from matrix_admin_sdk.endpoints import RequestMethods
 from matrix_admin_sdk.models.forward_extremities import ForwardExtremitiesModel
 
-from .endpoint import Endpoint, RequestMethods
+from .endpoint import Endpoint
 
 
 class ForwardExtremities(Endpoint):

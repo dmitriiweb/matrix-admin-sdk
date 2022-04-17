@@ -1,6 +1,7 @@
+from matrix_admin_sdk.endpoints import RequestMethods
 from matrix_admin_sdk.models.delete_local_media import DeleteLocalMediaModel
 
-from .endpoint import Endpoint, RequestMethods
+from .endpoint import Endpoint
 
 
 class DeleteLocalMedia(Endpoint):

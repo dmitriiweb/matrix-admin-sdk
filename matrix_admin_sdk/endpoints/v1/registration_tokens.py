@@ -1,8 +1,9 @@
 from typing import Any, Dict, List, Optional
 
+from matrix_admin_sdk.endpoints import RequestMethods
 from matrix_admin_sdk.models.registration_tokens import RegistrationTokensModel
 
-from .endpoint import Endpoint, RequestMethods
+from .endpoint import Endpoint
 
 
 class RegistrationTokens(Endpoint):

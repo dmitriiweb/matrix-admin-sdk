@@ -1,6 +1,7 @@
 from enum import Enum
 from typing import Any, Dict, List, Optional
 
+from matrix_admin_sdk.endpoints import RequestMethods
 from matrix_admin_sdk.models.rooms import (
     BlockStatusModel,
     DeletedRoomModel,
@@ -10,7 +11,7 @@ from matrix_admin_sdk.models.rooms import (
     RoomStateModel,
 )
 
-from .endpoint import Endpoint, RequestMethods
+from .endpoint import Endpoint
 
 
 class OrderBy(Enum):

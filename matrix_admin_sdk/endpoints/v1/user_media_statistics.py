@@ -1,9 +1,10 @@
 from enum import Enum
 from typing import Optional
 
+from matrix_admin_sdk.endpoints import RequestMethods
 from matrix_admin_sdk.models.user_media_statistics import UsersMediaStatisticsModel
 
-from .endpoint import Endpoint, RequestMethods
+from .endpoint import Endpoint
 
 
 class OrderBy(Enum):

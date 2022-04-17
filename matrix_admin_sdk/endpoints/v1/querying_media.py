@@ -1,6 +1,7 @@
+from matrix_admin_sdk.endpoints import RequestMethods
 from matrix_admin_sdk.models.querying_media import QueryingMediaModel
 
-from .endpoint import Endpoint, RequestMethods
+from .endpoint import Endpoint
 
 
 class QueryingMedia(Endpoint):

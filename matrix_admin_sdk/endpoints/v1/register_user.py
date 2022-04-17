@@ -1,6 +1,7 @@
+from matrix_admin_sdk.endpoints import RequestMethods
 from matrix_admin_sdk.models.register_user import NewUserModel
 
-from .endpoint import Endpoint, RequestMethods
+from .endpoint import Endpoint
 
 
 class RegisterUsers(Endpoint):

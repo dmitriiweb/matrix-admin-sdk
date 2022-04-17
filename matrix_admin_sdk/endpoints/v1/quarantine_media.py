@@ -1,6 +1,8 @@
 from typing import Any, Dict
 
-from .endpoint import Endpoint, RequestMethods
+from matrix_admin_sdk.endpoints import RequestMethods
+
+from .endpoint import Endpoint
 
 
 class QuarantineMedia(Endpoint):
