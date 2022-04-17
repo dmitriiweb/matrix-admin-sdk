@@ -91,7 +91,7 @@ class Rooms(Endpoint):
         params = {
             "from": from_,
             "limit": limit,
-            "order_by": order_by.name,
+            "order_by": order_by.value,
             "dir": dir_,
         }
         if search_term is not None:
