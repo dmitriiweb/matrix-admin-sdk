@@ -21,3 +21,4 @@ Async wrapper for the Matrix.org Admin API.
 - [Forward Extremities](endpoints/v1/forward_extremities.md#Forward Extremities)
 - [Server Notices](endpoints/v1/server_notices.md#Server Notices)
 - [User Media Statistics](endpoints/v1/user_media_statistics.md#User Media Statistics)
+- [User](endpoints/v1/user.md#User)
