@@ -70,3 +70,4 @@ nav:
       - Rooms: endpoints/rooms.md
       - Forward Extremities: endpoints/forward_extremities.md
       - Server Notices: endpoints/server_notices.md
+      - User Media Statistics: endpoints/user_media_statistics.md

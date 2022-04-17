@@ -19,3 +19,4 @@ Async wrapper for the Matrix.org Admin API.
 - [Rooms](endpoints/rooms.md#Rooms)
 - [Forward Extremities](endpoints/forward_extremities.md#Forward Extremities)
 - [Server Notices](endpoints/server_notices.md#Server Notices)
+- [User Media Statistics](endpoints/user_media_statistics.md#User Media Statistics)

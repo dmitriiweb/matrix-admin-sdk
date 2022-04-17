@@ -12,3 +12,4 @@ from .querying_media import QueryingMedia
 from .register_user import RegisterUsers
 from .registration_tokens import RegistrationTokens
 from .rooms import Rooms
+from .user_media_statistics import UserMediaStatistics
