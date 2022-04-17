@@ -2,7 +2,7 @@
 
 ## Endpoints
 ### [ForwardExtremities](https://matrix-org.github.io/synapse/latest/admin_api/rooms.html#forward-extremities-admin-api)
-::: matrix_admin_sdk.endpoints.forward_extremities.ForwardExtremities
+::: matrix_admin_sdk.endpoints.v1.forward_extremities.ForwardExtremities
 
 ## Models
 ### ForwardExtremitiesModel

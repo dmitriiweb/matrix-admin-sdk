@@ -2,7 +2,7 @@
 
 ## Endpoints
 ### [Rooms](https://matrix-org.github.io/synapse/latest/admin_api/rooms.html)
-::: matrix_admin_sdk.endpoints.rooms.Rooms
+::: matrix_admin_sdk.endpoints.v1.rooms.Rooms
 
 ## Models
 ### RoomsModel
@@ -20,4 +20,4 @@
 
 ## Other
 ### OrderBy
-::: matrix_admin_sdk.endpoints.rooms.OrderBy
+::: matrix_admin_sdk.endpoints.v1.rooms.OrderBy

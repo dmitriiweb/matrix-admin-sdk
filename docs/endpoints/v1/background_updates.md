@@ -2,7 +2,7 @@
 
 ## Endpoints
 ### [BackgroundUpdates](https://matrix-org.github.io/synapse/latest/usage/administration/admin_api/background_updates.html)
-::: matrix_admin_sdk.endpoints.background_updates.BackgroundUpdates
+::: matrix_admin_sdk.endpoints.v1.background_updates.BackgroundUpdates
 
 ## Models
 ### CurrentUpdate

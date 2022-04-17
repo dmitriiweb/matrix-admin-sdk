@@ -2,7 +2,7 @@
 
 ## Endpoints
 ### [EventReports](https://matrix-org.github.io/synapse/latest/admin_api/event_reports.html)
-::: matrix_admin_sdk.endpoints.event_reports.EventReports
+::: matrix_admin_sdk.endpoints.v1.event_reports.EventReports
 
 ## Models
 ### EventDetails

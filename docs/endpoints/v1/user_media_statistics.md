@@ -2,7 +2,7 @@
 
 ## Endpoints
 ### [UserMediaStatistics](https://matrix-org.github.io/synapse/latest/admin_api/statistics.html)
-::: matrix_admin_sdk.endpoints.user_media_statistics.UserMediaStatistics
+::: matrix_admin_sdk.endpoints.v1.user_media_statistics.UserMediaStatistics
 
 ## Models
 ### RenewAccountModel
@@ -10,4 +10,4 @@
 
 ## Other
 ### OrderBy
-::: matrix_admin_sdk.endpoints.user_media_statistics.OrderBy
+::: matrix_admin_sdk.endpoints.v1.user_media_statistics.OrderBy
