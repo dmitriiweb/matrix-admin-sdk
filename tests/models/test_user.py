@@ -1,5 +1,21 @@
-from matrix_admin_sdk.models.user import CurrentSessionsModel
+from matrix_admin_sdk.models.user import CurrentSessionsModel, PushersModel
 
+
+PUSHERS = {
+    "pushers": [
+        {
+            "app_display_name": "HTTP Push Notifications",
+            "app_id": "m.http",
+            "data": {"url": "example.com"},
+            "device_display_name": "pushy push",
+            "kind": "http",
+            "lang": "None",
+            "profile_tag": "",
+            "pushkey": "a@example.com",
+        }
+    ],
+    "total": 1,
+}
 
 CURRENT_SESSIONS = {
     "user_id": "<user_id>",
@@ -32,3 +48,10 @@ def test_query_current_session():
     assert cs.user_id == CURRENT_SESSIONS["user_id"]
     assert isinstance(cs.devices, dict)
     assert cs.devices[""][0].ip == "1.2.3.4"
+
+
+def test_pushers_model():
+    m = PushersModel.from_dict(PUSHERS)
+    assert m.total == 1
+    assert m.pushers[0].app_display_name == "HTTP Push Notifications"
+    assert m.pushers[0].data.url == "example.com"

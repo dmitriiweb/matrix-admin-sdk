@@ -6,6 +6,7 @@ from matrix_admin_sdk.models.user import (
     CurrentSessionsModel,
     DeletedMediaModel,
     MediaListModel,
+    PushersModel,
     RoomModel,
 )
 
@@ -14,7 +15,7 @@ from .endpoint import Endpoint
 
 class OrderByMedia(Enum):
     """
-    Enum for the order_by_media parameter.
+    Enum for the order by media parameter.
     """
 
     MEDIA_ID = "media_id"
@@ -37,7 +38,7 @@ class User(Endpoint):
         Initialize User endpoint
         Args:
             user_id: fully-qualified user id: for example, @user:server.com
-            **kwargs: keyword arguments to pass to the Endpoint
+            **kwargs: key
 
         Returns: None
 
@@ -239,3 +240,43 @@ class User(Endpoint):
         data = {"valid_until_ms": valid_until_ms}
         result = await self.request(RequestMethods.POST, url, params=data)
         return result
+
+    async def get_all_pushers(self) -> PushersModel:
+        """
+        Gets information about all pushers for a specific user_id.
+        Returns: PushersModel
+
+        """
+        url = self.url(f"users/{self.user_id}/pushers")
+        result = await self.request(RequestMethods.GET, url)
+        res: PushersModel = PushersModel.from_dict(result)
+        return res
+
+    async def shadow_bann(self, bann_user: bool) -> None:
+        """
+        Shadow-banning is a useful tool for moderating malicious or egregiously
+        abusive users. A shadow-banned users receives successful responses to
+        their client-server API requests, but the events are not propagated
+        into rooms. This can be an effective tool as it (hopefully) takes
+        longer for the user to realise they are being moderated before pivoting
+        to another account.
+
+        Shadow-banning a user should be used as a tool of last resort and may
+        lead to confusing or broken behaviour for the client. A shadow-banned
+        user will not receive any notification and it is generally more
+        appropriate to ban or kick abusive users. A shadow-banned user will be
+        unable to contact anyone on the server.
+
+        Args:
+            bann_user: True to shadow-ban the user, False to un-shadow-ban the user.
+
+        Returns: None
+
+        """
+        url = self.url(f"users/{self.user_id}/shadow_ban")
+        if bann_user:
+            method = RequestMethods.POST
+        else:
+            method = RequestMethods.DELETE
+
+        await self.request(method, url)
