@@ -22,3 +22,4 @@ Async wrapper for the Matrix.org Admin API.
 - [Server Notices](endpoints/v1/server_notices.md#Server Notices)
 - [User Media Statistics](endpoints/v1/user_media_statistics.md#User Media Statistics)
 - [User](endpoints/v1/user.md#User)
+- [User Rate Limits](endpoints/v1/user_rate_limits.md#User Rate Limits)

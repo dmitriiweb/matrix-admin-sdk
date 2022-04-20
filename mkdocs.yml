@@ -73,3 +73,4 @@ nav:
           - Server Notices: endpoints/v1/server_notices.md
           - User Media Statistics: endpoints/v1/user_media_statistics.md
           - User: endpoints/v1/user.md
+          - User Rate Limits: endpoints/v1/user_rate_limits.md
