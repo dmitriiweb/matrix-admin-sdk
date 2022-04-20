@@ -24,3 +24,4 @@ Async wrapper for the Matrix.org Admin API.
 - [User](endpoints/v1/user.md#User)
 - [User Rate Limits](endpoints/v1/user_rate_limits.md#User Rate Limits)
 - [Server](endpoints/v1/server.md#Server)
+- [Federation](endpoints/v1/federation.md#Federation)
