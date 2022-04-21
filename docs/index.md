@@ -3,6 +3,10 @@
 Async wrapper for the Matrix.org Admin API.
 
 ## Installation
+```shell
+pip install matrix-admin-sdk
+```
+
 
 ## Usage
 ### Quick Start

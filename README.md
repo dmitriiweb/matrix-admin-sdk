@@ -4,9 +4,12 @@ Async wrapper for matrix.org admin API
 
 
 ## Installation
+```shell
+pip install matrix-admin-sdk
+```
 
 ## Usage
-Documentation: 
+Documentation [here](https://dmitriiweb.github.io/matrix-admin-sdk/)
 
 ### Quick Start
 ```python
