@@ -4,7 +4,7 @@ version = "0.1.0b"
 description = ""
 authors = ["Dmitrii Kurlov <dmitriik@protonmail.com>"]
 classifiers = [
-    "Development Status :: 4 - Bete",
+    "Development Status :: 4 - Beta",
     "License :: OSI Approved :: MIT License",
     "Operating System :: MacOS",
     "Operating System :: Microsoft :: Windows",
