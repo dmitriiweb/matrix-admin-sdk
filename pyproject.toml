@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "matrix-admin-sdk"
-version = "0.1.0"
+version = "0.1.0b"
 description = ""
 authors = ["Dmitrii Kurlov <dmitriik@protonmail.com>"]
 
