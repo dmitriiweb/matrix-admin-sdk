@@ -56,6 +56,6 @@ class RegisterUsers(Endpoint):
             "admin": admin,
             "mac": mac,
         }
-        result = await self.request(RequestMethods.POST, url, data=data)
+        result = await self.request(RequestMethods.POST, url, json=data)
         res: NewUserModel = NewUserModel.from_dict(result)
         return res

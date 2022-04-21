@@ -17,4 +17,4 @@ class DeleteGroup(Endpoint):
             group_id: The group ID to delete.
         """
         url = self.url(f"delete_group/{group_id}")
-        await self.request(RequestMethods.POST, url)
+        await self.request(RequestMethods.POST, url, json={})

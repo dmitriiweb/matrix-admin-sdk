@@ -38,5 +38,5 @@ class ServerNotices(Endpoint):
         }
         if state_key is not None:
             data["state_key"] = state_key
-        result = await self.request(RequestMethods.POST, url, data=data)
+        result = await self.request(RequestMethods.POST, url, json=data)
         return result

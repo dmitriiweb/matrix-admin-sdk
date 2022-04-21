@@ -143,4 +143,4 @@ class Federation(Endpoint):
 
         """
         url = self.url(f"federation/destinations/{destination}/reset_connection")
-        await self.request(RequestMethods.POST, url)
+        await self.request(RequestMethods.POST, url, json={})

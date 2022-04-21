@@ -111,7 +111,7 @@ class RegistrationTokens(Endpoint):
         """
         url = self.url(f"registration_tokens/{token}")
         data = {"uses_allowed": uses_allowed, "expiry_time": expiry_time}
-        result = await self.request(RequestMethods.PUT, url, data=data)
+        result = await self.request(RequestMethods.PUT, url, json=data)
         res: RegistrationTokensModel = RegistrationTokensModel.from_dict(result)
         return res
 

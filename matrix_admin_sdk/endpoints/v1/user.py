@@ -72,7 +72,7 @@ class User(Endpoint):
         """
         url = self.url(f"deactivate/{self.user_id}")
         data: Dict[str, str] = {}
-        result = await self.request(RequestMethods.POST, url, data=data)
+        result = await self.request(RequestMethods.POST, url, json=data)
         return result
 
     async def reset_password(
@@ -90,7 +90,7 @@ class User(Endpoint):
         """
         url = self.url(f"reset_password/{self.user_id}")
         data = {"new_password": new_password, "logout_devices": logout_devices}
-        await self.request(RequestMethods.POST, url, data=data)
+        await self.request(RequestMethods.POST, url, json=data)
 
     async def is_admin(self) -> bool:
         """
@@ -238,7 +238,7 @@ class User(Endpoint):
         """
         url = self.url(f"users/{self.user_id}/login")
         data = {"valid_until_ms": valid_until_ms}
-        result = await self.request(RequestMethods.POST, url, params=data)
+        result = await self.request(RequestMethods.POST, url, json=data)
         return result
 
     async def get_all_pushers(self) -> PushersModel:

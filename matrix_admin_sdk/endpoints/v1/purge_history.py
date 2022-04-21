@@ -61,7 +61,7 @@ class PurgeHistory(Endpoint):
         if purge_up_to_ts is not None:
             data["purge_up_to_ts"] = purge_up_to_ts
 
-        result = await self.request(RequestMethods.POST, url, data=data)
+        result = await self.request(RequestMethods.POST, url, json=data)
         return result
 
     async def purge_status_query(self, purge_id: str) -> Dict[str, str]:

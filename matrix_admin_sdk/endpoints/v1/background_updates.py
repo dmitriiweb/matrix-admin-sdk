@@ -37,7 +37,7 @@ class BackgroundUpdates(Endpoint):
         """
         url = self.url("background_updates/enabled")
         data = {"enabled": enabled}
-        result = await self.request(RequestMethods.POST, url, data=data)
+        result = await self.request(RequestMethods.POST, url, json=data)
         res: EnabledModel = EnabledModel.from_dict(result)
         return res
 
@@ -54,4 +54,4 @@ class BackgroundUpdates(Endpoint):
         """
         url = self.url("background_updates/start_job")
         data = {"job_name": job_name}
-        await self.request(RequestMethods.POST, url, data=data)
+        await self.request(RequestMethods.POST, url, json=data)

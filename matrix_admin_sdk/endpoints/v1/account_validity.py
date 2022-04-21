@@ -31,6 +31,6 @@ class AccountValidity(Endpoint):
             "expiration_ts": expiration_ts,
             "enable_renewal_emails": enable_renewal_emails,
         }
-        response = await self.request(RequestMethods.POST, url, data=data)
+        response = await self.request(RequestMethods.POST, url, json=data)
         res: RenewAccountModel = RenewAccountModel.from_dict(response)
         return res

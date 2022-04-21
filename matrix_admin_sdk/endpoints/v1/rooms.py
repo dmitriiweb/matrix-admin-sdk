@@ -163,7 +163,7 @@ class Rooms(Endpoint):
         """
         url = self.url(f"rooms/{room_id}/block")
         data = {"block": block}
-        result = await self.request(RequestMethods.PUT, url, data=data)
+        result = await self.request(RequestMethods.PUT, url, json=data)
         return result
 
     async def get_block_status(self, room_id: str) -> BlockStatusModel:
@@ -266,7 +266,7 @@ class Rooms(Endpoint):
             purge: purge,
             force_purge: force_purge,
         }
-        result = await self.request(RequestMethods.DELETE, url, data=data)
+        result = await self.request(RequestMethods.DELETE, url, json=data)
         res: DeletedRoomModel = DeletedRoomModel.from_dict(result)
         return res
 
@@ -286,7 +286,7 @@ class Rooms(Endpoint):
         """
         url = self.url(f"rooms/{room_id_or_alias}/make_room_admin")
         data = {"user_id": user_id}
-        await self.request(RequestMethods.POST, url, data=data)
+        await self.request(RequestMethods.POST, url, json=data)
         return None
 
     async def event_context(self, room_id: str, event_id: str) -> Dict[str, Any]:

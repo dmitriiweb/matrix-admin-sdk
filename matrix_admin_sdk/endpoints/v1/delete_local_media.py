@@ -59,5 +59,5 @@ class DeleteLocalMedia(Endpoint):
             f"media/{server_name}/delete?before_ts={before_ts}&size_gt={size_gt}&keep_profiles={keep_profile_string}"
         )
 
-        result = await self.request(RequestMethods.POST, url)
+        result = await self.request(RequestMethods.POST, url, json={})
         return DeleteLocalMediaModel.from_dict(result)

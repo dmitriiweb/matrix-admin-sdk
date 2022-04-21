@@ -28,5 +28,5 @@ class EditRoomMembership(Endpoint):
         """
         url = self.url(f"join/{room_id_or_alias}")
         data = {"user_id": user_id}
-        result = await self.request(RequestMethods.POST, url, data=data)
+        result = await self.request(RequestMethods.POST, url, json=data)
         return result

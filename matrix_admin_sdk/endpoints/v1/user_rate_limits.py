@@ -48,7 +48,7 @@ class UserRateLimits(Endpoint):
         """
         url = self.url(f"users/{self.user_id}/override_ratelimit")
         data = {"messages_per_second": messages_per_second, "burst_count": burst_count}
-        result = await self.request(RequestMethods.POST, url, data=data)
+        result = await self.request(RequestMethods.POST, url, json=data)
         res: RateLimitsStatusModel = RateLimitsStatusModel.from_dict(result)
         return res
 
