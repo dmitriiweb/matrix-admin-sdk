@@ -1,5 +1,7 @@
 # Matrix Admin Sdk
 
+[![PyPI version](https://badge.fury.io/py/matrix-admin-sdk.svg)](https://badge.fury.io/py/matrix-admin-sdk)
+
 Async wrapper for matrix.org admin API
 
 
@@ -9,7 +11,7 @@ pip install matrix-admin-sdk
 ```
 
 ## Usage
-Documentation [here](https://dmitriiweb.github.io/matrix-admin-sdk/)
+Documentations [here](https://dmitriiweb.github.io/matrix-admin-sdk/)
 
 ### Quick Start
 ```python
