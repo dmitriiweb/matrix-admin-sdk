@@ -1,0 +1,1827 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.8">
+    
+    
+      
+        <title>Federation - Matrix Admin Sdk</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.644de097.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.e6a45f82.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#e92063">
+        
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="pink" data-md-color-accent="pink">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#federation" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Matrix Admin Sdk" class="md-header__button md-logo" aria-label="Matrix Admin Sdk" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Matrix Admin Sdk
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Federation
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Matrix Admin Sdk" class="md-nav__button md-logo" aria-label="Matrix Admin Sdk" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Matrix Admin Sdk
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Matrix Admin SDK
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Endpoints
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Endpoints" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Endpoints
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" type="checkbox" id="__nav_2_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_1">
+          v1
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="v1" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          v1
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../account_validity/" class="md-nav__link">
+        Account Validity
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../background_updates/" class="md-nav__link">
+        Background Updates
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../delete_group/" class="md-nav__link">
+        Delete Group
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../delete_local_media/" class="md-nav__link">
+        Delete Local Media
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../edit_room_membership/" class="md-nav__link">
+        Edit Room Membership
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../event_reports/" class="md-nav__link">
+        Event Reports
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../purge_history/" class="md-nav__link">
+        Purge History
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../purge_remote_media/" class="md-nav__link">
+        Purge Remote Media
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quarantine_media/" class="md-nav__link">
+        Quarantine Media
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../querying_media/" class="md-nav__link">
+        Querying Media
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../register_user/" class="md-nav__link">
+        Register Users
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../registration_tokens/" class="md-nav__link">
+        Registration Tokens
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rooms/" class="md-nav__link">
+        Rooms
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../forward_extremities/" class="md-nav__link">
+        Forward Extremities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../server_notices/" class="md-nav__link">
+        Server Notices
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user_media_statistics/" class="md-nav__link">
+        User Media Statistics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user/" class="md-nav__link">
+        User
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user_rate_limits/" class="md-nav__link">
+        User Rate Limits
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../server/" class="md-nav__link">
+        Server
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Federation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Federation
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#endpoints" class="md-nav__link">
+    Endpoints
+  </a>
+  
+    <nav class="md-nav" aria-label="Endpoints">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#federation_1" class="md-nav__link">
+    Federation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#matrix_admin_sdk.endpoints.v1.federation.Federation" class="md-nav__link">
+    matrix_admin_sdk.endpoints.v1.federation.Federation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#matrix_admin_sdk.endpoints.v1.federation.Federation.get_destination_details" class="md-nav__link">
+    get_destination_details()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#matrix_admin_sdk.endpoints.v1.federation.Federation.get_destination_rooms" class="md-nav__link">
+    get_destination_rooms()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#matrix_admin_sdk.endpoints.v1.federation.Federation.get_destinations" class="md-nav__link">
+    get_destinations()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#matrix_admin_sdk.endpoints.v1.federation.Federation.reset_connection_timeout" class="md-nav__link">
+    reset_connection_timeout()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#models" class="md-nav__link">
+    Models
+  </a>
+  
+    <nav class="md-nav" aria-label="Models">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#destinationsmodel" class="md-nav__link">
+    DestinationsModel
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#matrix_admin_sdk.models.federation.DestinationsModel" class="md-nav__link">
+    matrix_admin_sdk.models.federation.DestinationsModel
+  </a>
+  
+    <nav class="md-nav" aria-label="matrix_admin_sdk.models.federation.DestinationsModel">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#destinationmodel" class="md-nav__link">
+    DestinationModel
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#matrix_admin_sdk.models.federation.DestinationModel" class="md-nav__link">
+    matrix_admin_sdk.models.federation.DestinationModel
+  </a>
+  
+    <nav class="md-nav" aria-label="matrix_admin_sdk.models.federation.DestinationModel">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#destinationroomsmodel" class="md-nav__link">
+    DestinationRoomsModel
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#matrix_admin_sdk.models.federation.DestinationRoomsModel" class="md-nav__link">
+    matrix_admin_sdk.models.federation.DestinationRoomsModel
+  </a>
+  
+    <nav class="md-nav" aria-label="matrix_admin_sdk.models.federation.DestinationRoomsModel">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#destinationroommodel" class="md-nav__link">
+    DestinationRoomModel
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#matrix_admin_sdk.models.federation.DestinationRoomModel" class="md-nav__link">
+    matrix_admin_sdk.models.federation.DestinationRoomModel
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#endpoints" class="md-nav__link">
+    Endpoints
+  </a>
+  
+    <nav class="md-nav" aria-label="Endpoints">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#federation_1" class="md-nav__link">
+    Federation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#matrix_admin_sdk.endpoints.v1.federation.Federation" class="md-nav__link">
+    matrix_admin_sdk.endpoints.v1.federation.Federation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#matrix_admin_sdk.endpoints.v1.federation.Federation.get_destination_details" class="md-nav__link">
+    get_destination_details()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#matrix_admin_sdk.endpoints.v1.federation.Federation.get_destination_rooms" class="md-nav__link">
+    get_destination_rooms()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#matrix_admin_sdk.endpoints.v1.federation.Federation.get_destinations" class="md-nav__link">
+    get_destinations()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#matrix_admin_sdk.endpoints.v1.federation.Federation.reset_connection_timeout" class="md-nav__link">
+    reset_connection_timeout()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#models" class="md-nav__link">
+    Models
+  </a>
+  
+    <nav class="md-nav" aria-label="Models">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#destinationsmodel" class="md-nav__link">
+    DestinationsModel
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#matrix_admin_sdk.models.federation.DestinationsModel" class="md-nav__link">
+    matrix_admin_sdk.models.federation.DestinationsModel
+  </a>
+  
+    <nav class="md-nav" aria-label="matrix_admin_sdk.models.federation.DestinationsModel">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#destinationmodel" class="md-nav__link">
+    DestinationModel
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#matrix_admin_sdk.models.federation.DestinationModel" class="md-nav__link">
+    matrix_admin_sdk.models.federation.DestinationModel
+  </a>
+  
+    <nav class="md-nav" aria-label="matrix_admin_sdk.models.federation.DestinationModel">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#destinationroomsmodel" class="md-nav__link">
+    DestinationRoomsModel
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#matrix_admin_sdk.models.federation.DestinationRoomsModel" class="md-nav__link">
+    matrix_admin_sdk.models.federation.DestinationRoomsModel
+  </a>
+  
+    <nav class="md-nav" aria-label="matrix_admin_sdk.models.federation.DestinationRoomsModel">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#destinationroommodel" class="md-nav__link">
+    DestinationRoomModel
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#matrix_admin_sdk.models.federation.DestinationRoomModel" class="md-nav__link">
+    matrix_admin_sdk.models.federation.DestinationRoomModel
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<h1 id="federation">Federation<a class="headerlink" href="#federation" title="Permanent link">&para;</a></h1>
+<h2 id="endpoints">Endpoints<a class="headerlink" href="#endpoints" title="Permanent link">&para;</a></h2>
+<h3 id="federation_1"><a href="https://matrix-org.github.io/synapse/latest/usage/administration/admin_api/federation.html">Federation</a><a class="headerlink" href="#federation_1" title="Permanent link">&para;</a></h3>
+
+
+  <div class="doc doc-object doc-class">
+
+<a id="matrix_admin_sdk.endpoints.v1.federation.Federation"></a>
+    <div class="doc doc-contents first">
+
+      <p>This API allows a server administrator to manage Synapse's federation with
+other homeservers.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>matrix_admin_sdk/endpoints/v1/federation.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Federation</span><span class="p">(</span><span class="n">Endpoint</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This API allows a server administrator to manage Synapse&#39;s federation with</span>
+<span class="sd">    other homeservers.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">get_destinations</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">from_</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="n">limit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span>
+        <span class="n">order_by</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">OrderBy</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">dir_</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;f&quot;</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DestinationsModel</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This API gets the current destination retry timing info for all remote servers.</span>
+
+<span class="sd">        The list contains all the servers with which the server federates,</span>
+<span class="sd">        regardless of whether an error occurred or not. If an error occurs,</span>
+<span class="sd">        it may take up to 20 minutes for the error to be displayed here, as</span>
+<span class="sd">        a complete retry must have failed.</span>
+<span class="sd">        Args:</span>
+<span class="sd">            from_: Offset in the returned list. Defaults to 0</span>
+<span class="sd">            limit: Maximum amount of destinations to return. Defaults to 100.</span>
+<span class="sd">            order_by: The method in which to sort the returned list of destinations.</span>
+<span class="sd">                Default: OrderBy.DESTINATION</span>
+<span class="sd">            dir_: Direction of room order. Either f for forwards or b for</span>
+<span class="sd">                backwards. Setting this value to b will reverse the above sort order.</span>
+<span class="sd">                Defaults to f</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="p">(</span><span class="s2">&quot;federation/destinations&quot;</span><span class="p">)</span>
+        <span class="n">order_by</span> <span class="o">=</span> <span class="n">order_by</span> <span class="k">if</span> <span class="n">order_by</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">OrderBy</span><span class="o">.</span><span class="n">DESTINATION</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;from&quot;</span><span class="p">:</span> <span class="n">from_</span><span class="p">,</span>
+            <span class="s2">&quot;limit&quot;</span><span class="p">:</span> <span class="n">limit</span><span class="p">,</span>
+            <span class="s2">&quot;order_by&quot;</span><span class="p">:</span> <span class="n">order_by</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+            <span class="s2">&quot;dir&quot;</span><span class="p">:</span> <span class="n">dir_</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">RequestMethods</span><span class="o">.</span><span class="n">GET</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
+        <span class="n">res</span><span class="p">:</span> <span class="n">DestinationsModel</span> <span class="o">=</span> <span class="n">DestinationsModel</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">res</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">get_destination_details</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">destination</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DestinationModel</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This API gets the retry timing info for a specific remote server.</span>
+<span class="sd">        Args:</span>
+<span class="sd">            destination: Name of the remote server</span>
+
+<span class="sd">        Returns: DestinationModel</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;federation/destinations/</span><span class="si">{</span><span class="n">destination</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">RequestMethods</span><span class="o">.</span><span class="n">GET</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+        <span class="n">res</span><span class="p">:</span> <span class="n">DestinationModel</span> <span class="o">=</span> <span class="n">DestinationModel</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">res</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">get_destination_rooms</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">destination</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">from_</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="n">limit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span>
+        <span class="n">dir_</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;f&quot;</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DestinationRoomsModel</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This API gets the rooms that federate with a specific remote server.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            destination: Name of the remote server</span>
+<span class="sd">            from_: Offset in the returned list. Defaults to 0</span>
+<span class="sd">            limit: Maximum amount of destinations to return. Defaults to 100.</span>
+<span class="sd">            dir_: Direction of room order by room_id. Either f for forwards</span>
+<span class="sd">                or b for backwards. Defaults to f</span>
+
+<span class="sd">        Returns: DestinationRoomsModel</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;federation/destinations/</span><span class="si">{</span><span class="n">destination</span><span class="si">}</span><span class="s2">/rooms&quot;</span><span class="p">)</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;from&quot;</span><span class="p">:</span> <span class="n">from_</span><span class="p">,</span>
+            <span class="s2">&quot;limit&quot;</span><span class="p">:</span> <span class="n">limit</span><span class="p">,</span>
+            <span class="s2">&quot;dir&quot;</span><span class="p">:</span> <span class="n">dir_</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">RequestMethods</span><span class="o">.</span><span class="n">GET</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
+        <span class="n">res</span><span class="p">:</span> <span class="n">DestinationRoomsModel</span> <span class="o">=</span> <span class="n">DestinationRoomsModel</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">res</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">reset_connection_timeout</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">destination</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Synapse makes federation requests to other homeservers. If a federation</span>
+<span class="sd">        request fails, Synapse will mark the destination homeserver as offline,</span>
+<span class="sd">        preventing any future requests to that server for a &quot;cooldown&quot; period.</span>
+<span class="sd">        This period grows over time if the server continues to fail its</span>
+<span class="sd">        responses (exponential backoff).</span>
+
+<span class="sd">        Admins can cancel the cooldown period with this API.</span>
+
+<span class="sd">        This API resets the retry timing for a specific remote server and tries</span>
+<span class="sd">        to connect to the remote server again. It does not wait for the next</span>
+<span class="sd">        retry_interval. The connection must have previously run into an error</span>
+<span class="sd">        and retry_last_ts (Destination Details API) must not be equal to 0.</span>
+
+<span class="sd">        The connection attempt is carried out in the background and can take</span>
+<span class="sd">        a while even if the API already returns the http status 200.</span>
+<span class="sd">        Args:</span>
+<span class="sd">            destination: Name of the remote server</span>
+
+<span class="sd">        Returns: None</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;federation/destinations/</span><span class="si">{</span><span class="n">destination</span><span class="si">}</span><span class="s2">/reset_connection&quot;</span><span class="p">)</span>
+        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">RequestMethods</span><span class="o">.</span><span class="n">POST</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="p">{})</span>
+</code></pre></div>
+        </details>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h2 id="matrix_admin_sdk.endpoints.v1.federation.Federation.get_destination_details" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">get_destination_details</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">destination</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-async"><code>async</code></small>
+  </span>
+
+<a href="#matrix_admin_sdk.endpoints.v1.federation.Federation.get_destination_details" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>This API gets the retry timing info for a specific remote server.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>destination</code></td>
+        <td><code>str</code></td>
+        <td><p>Name of the remote server</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>      
+
+        <details class="quote">
+          <summary>Source code in <code>matrix_admin_sdk/endpoints/v1/federation.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">async</span> <span class="k">def</span> <span class="nf">get_destination_details</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">destination</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DestinationModel</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This API gets the retry timing info for a specific remote server.</span>
+<span class="sd">    Args:</span>
+<span class="sd">        destination: Name of the remote server</span>
+
+<span class="sd">    Returns: DestinationModel</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;federation/destinations/</span><span class="si">{</span><span class="n">destination</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">RequestMethods</span><span class="o">.</span><span class="n">GET</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+    <span class="n">res</span><span class="p">:</span> <span class="n">DestinationModel</span> <span class="o">=</span> <span class="n">DestinationModel</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">res</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h2 id="matrix_admin_sdk.endpoints.v1.federation.Federation.get_destination_rooms" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">get_destination_rooms</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">destination</span><span class="p">,</span> <span class="n">from_</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">dir_</span><span class="o">=</span><span class="s1">&#39;f&#39;</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-async"><code>async</code></small>
+  </span>
+
+<a href="#matrix_admin_sdk.endpoints.v1.federation.Federation.get_destination_rooms" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>This API gets the rooms that federate with a specific remote server.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>destination</code></td>
+        <td><code>str</code></td>
+        <td><p>Name of the remote server</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>from_</code></td>
+        <td><code>int</code></td>
+        <td><p>Offset in the returned list. Defaults to 0</p></td>
+        <td><code>0</code></td>
+      </tr>
+      <tr>
+        <td><code>limit</code></td>
+        <td><code>int</code></td>
+        <td><p>Maximum amount of destinations to return. Defaults to 100.</p></td>
+        <td><code>100</code></td>
+      </tr>
+      <tr>
+        <td><code>dir_</code></td>
+        <td><code>str</code></td>
+        <td><p>Direction of room order by room_id. Either f for forwards
+or b for backwards. Defaults to f</p></td>
+        <td><code>&#39;f&#39;</code></td>
+      </tr>
+  </tbody>
+</table>      
+
+        <details class="quote">
+          <summary>Source code in <code>matrix_admin_sdk/endpoints/v1/federation.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">async</span> <span class="k">def</span> <span class="nf">get_destination_rooms</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">destination</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">from_</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="n">limit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span>
+    <span class="n">dir_</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;f&quot;</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DestinationRoomsModel</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This API gets the rooms that federate with a specific remote server.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        destination: Name of the remote server</span>
+<span class="sd">        from_: Offset in the returned list. Defaults to 0</span>
+<span class="sd">        limit: Maximum amount of destinations to return. Defaults to 100.</span>
+<span class="sd">        dir_: Direction of room order by room_id. Either f for forwards</span>
+<span class="sd">            or b for backwards. Defaults to f</span>
+
+<span class="sd">    Returns: DestinationRoomsModel</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;federation/destinations/</span><span class="si">{</span><span class="n">destination</span><span class="si">}</span><span class="s2">/rooms&quot;</span><span class="p">)</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;from&quot;</span><span class="p">:</span> <span class="n">from_</span><span class="p">,</span>
+        <span class="s2">&quot;limit&quot;</span><span class="p">:</span> <span class="n">limit</span><span class="p">,</span>
+        <span class="s2">&quot;dir&quot;</span><span class="p">:</span> <span class="n">dir_</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">RequestMethods</span><span class="o">.</span><span class="n">GET</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
+    <span class="n">res</span><span class="p">:</span> <span class="n">DestinationRoomsModel</span> <span class="o">=</span> <span class="n">DestinationRoomsModel</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">res</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h2 id="matrix_admin_sdk.endpoints.v1.federation.Federation.get_destinations" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">get_destinations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">from_</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">order_by</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dir_</span><span class="o">=</span><span class="s1">&#39;f&#39;</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-async"><code>async</code></small>
+  </span>
+
+<a href="#matrix_admin_sdk.endpoints.v1.federation.Federation.get_destinations" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>This API gets the current destination retry timing info for all remote servers.</p>
+<p>The list contains all the servers with which the server federates,
+regardless of whether an error occurred or not. If an error occurs,
+it may take up to 20 minutes for the error to be displayed here, as
+a complete retry must have failed.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>from_</code></td>
+        <td><code>int</code></td>
+        <td><p>Offset in the returned list. Defaults to 0</p></td>
+        <td><code>0</code></td>
+      </tr>
+      <tr>
+        <td><code>limit</code></td>
+        <td><code>int</code></td>
+        <td><p>Maximum amount of destinations to return. Defaults to 100.</p></td>
+        <td><code>100</code></td>
+      </tr>
+      <tr>
+        <td><code>order_by</code></td>
+        <td><code>Optional[matrix_admin_sdk.endpoints.v1.federation.OrderBy]</code></td>
+        <td><p>The method in which to sort the returned list of destinations.
+Default: OrderBy.DESTINATION</p></td>
+        <td><code>None</code></td>
+      </tr>
+      <tr>
+        <td><code>dir_</code></td>
+        <td><code>str</code></td>
+        <td><p>Direction of room order. Either f for forwards or b for
+backwards. Setting this value to b will reverse the above sort order.
+Defaults to f</p></td>
+        <td><code>&#39;f&#39;</code></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>matrix_admin_sdk/endpoints/v1/federation.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">async</span> <span class="k">def</span> <span class="nf">get_destinations</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">from_</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="n">limit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span>
+    <span class="n">order_by</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">OrderBy</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">dir_</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;f&quot;</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DestinationsModel</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This API gets the current destination retry timing info for all remote servers.</span>
+
+<span class="sd">    The list contains all the servers with which the server federates,</span>
+<span class="sd">    regardless of whether an error occurred or not. If an error occurs,</span>
+<span class="sd">    it may take up to 20 minutes for the error to be displayed here, as</span>
+<span class="sd">    a complete retry must have failed.</span>
+<span class="sd">    Args:</span>
+<span class="sd">        from_: Offset in the returned list. Defaults to 0</span>
+<span class="sd">        limit: Maximum amount of destinations to return. Defaults to 100.</span>
+<span class="sd">        order_by: The method in which to sort the returned list of destinations.</span>
+<span class="sd">            Default: OrderBy.DESTINATION</span>
+<span class="sd">        dir_: Direction of room order. Either f for forwards or b for</span>
+<span class="sd">            backwards. Setting this value to b will reverse the above sort order.</span>
+<span class="sd">            Defaults to f</span>
+
+<span class="sd">    Returns:</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="p">(</span><span class="s2">&quot;federation/destinations&quot;</span><span class="p">)</span>
+    <span class="n">order_by</span> <span class="o">=</span> <span class="n">order_by</span> <span class="k">if</span> <span class="n">order_by</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">OrderBy</span><span class="o">.</span><span class="n">DESTINATION</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;from&quot;</span><span class="p">:</span> <span class="n">from_</span><span class="p">,</span>
+        <span class="s2">&quot;limit&quot;</span><span class="p">:</span> <span class="n">limit</span><span class="p">,</span>
+        <span class="s2">&quot;order_by&quot;</span><span class="p">:</span> <span class="n">order_by</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+        <span class="s2">&quot;dir&quot;</span><span class="p">:</span> <span class="n">dir_</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">RequestMethods</span><span class="o">.</span><span class="n">GET</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
+    <span class="n">res</span><span class="p">:</span> <span class="n">DestinationsModel</span> <span class="o">=</span> <span class="n">DestinationsModel</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">res</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h2 id="matrix_admin_sdk.endpoints.v1.federation.Federation.reset_connection_timeout" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">reset_connection_timeout</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">destination</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-async"><code>async</code></small>
+  </span>
+
+<a href="#matrix_admin_sdk.endpoints.v1.federation.Federation.reset_connection_timeout" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Synapse makes federation requests to other homeservers. If a federation
+request fails, Synapse will mark the destination homeserver as offline,
+preventing any future requests to that server for a "cooldown" period.
+This period grows over time if the server continues to fail its
+responses (exponential backoff).</p>
+<p>Admins can cancel the cooldown period with this API.</p>
+<p>This API resets the retry timing for a specific remote server and tries
+to connect to the remote server again. It does not wait for the next
+retry_interval. The connection must have previously run into an error
+and retry_last_ts (Destination Details API) must not be equal to 0.</p>
+<p>The connection attempt is carried out in the background and can take
+a while even if the API already returns the http status 200.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>destination</code></td>
+        <td><code>str</code></td>
+        <td><p>Name of the remote server</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>      
+
+        <details class="quote">
+          <summary>Source code in <code>matrix_admin_sdk/endpoints/v1/federation.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">async</span> <span class="k">def</span> <span class="nf">reset_connection_timeout</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">destination</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Synapse makes federation requests to other homeservers. If a federation</span>
+<span class="sd">    request fails, Synapse will mark the destination homeserver as offline,</span>
+<span class="sd">    preventing any future requests to that server for a &quot;cooldown&quot; period.</span>
+<span class="sd">    This period grows over time if the server continues to fail its</span>
+<span class="sd">    responses (exponential backoff).</span>
+
+<span class="sd">    Admins can cancel the cooldown period with this API.</span>
+
+<span class="sd">    This API resets the retry timing for a specific remote server and tries</span>
+<span class="sd">    to connect to the remote server again. It does not wait for the next</span>
+<span class="sd">    retry_interval. The connection must have previously run into an error</span>
+<span class="sd">    and retry_last_ts (Destination Details API) must not be equal to 0.</span>
+
+<span class="sd">    The connection attempt is carried out in the background and can take</span>
+<span class="sd">    a while even if the API already returns the http status 200.</span>
+<span class="sd">    Args:</span>
+<span class="sd">        destination: Name of the remote server</span>
+
+<span class="sd">    Returns: None</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;federation/destinations/</span><span class="si">{</span><span class="n">destination</span><span class="si">}</span><span class="s2">/reset_connection&quot;</span><span class="p">)</span>
+    <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">RequestMethods</span><span class="o">.</span><span class="n">POST</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="p">{})</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+<h2 id="models">Models<a class="headerlink" href="#models" title="Permanent link">&para;</a></h2>
+<h3 id="destinationsmodel">DestinationsModel<a class="headerlink" href="#destinationsmodel" title="Permanent link">&para;</a></h3>
+
+
+  <div class="doc doc-object doc-class">
+
+<a id="matrix_admin_sdk.models.federation.DestinationsModel"></a>
+    <div class="doc doc-contents first">
+
+      <p>A list of destinations.</p>
+
+<p><strong>Attributes:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>destinations</code></td>
+        <td><code>list[DestinationModel]</code></td>
+        <td><p>An array of objects, each containing
+information about a destination</p></td>
+      </tr>
+      <tr>
+        <td><code>total</code></td>
+        <td><code>int</code></td>
+        <td><p>Total number of destinations</p></td>
+      </tr>
+      <tr>
+        <td><code>next_token</code></td>
+        <td><code>int|None</code></td>
+        <td><p>Indication for pagination</p></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>matrix_admin_sdk/models/federation.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">DestinationsModel</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A list of destinations.</span>
+<span class="sd">    Attributes:</span>
+<span class="sd">        destinations (list[DestinationModel]): An array of objects, each containing</span>
+<span class="sd">            information about a destination</span>
+<span class="sd">        total (int): Total number of destinations</span>
+<span class="sd">        next_token (int|None): Indication for pagination</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">destinations</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">DestinationModel</span><span class="p">]</span>
+    <span class="n">total</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">next_token</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_dict</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="s2">&quot;DestinationsModel&quot;</span><span class="p">:</span>
+        <span class="n">destinations</span> <span class="o">=</span> <span class="p">[</span><span class="n">DestinationModel</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;destinations&quot;</span><span class="p">]]</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span>
+            <span class="n">destinations</span><span class="o">=</span><span class="n">destinations</span><span class="p">,</span>
+            <span class="n">total</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;total&quot;</span><span class="p">],</span>
+            <span class="n">next_token</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;next_token&quot;</span><span class="p">),</span>
+        <span class="p">)</span>
+</code></pre></div>
+        </details>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+<h3 id="destinationmodel">DestinationModel<a class="headerlink" href="#destinationmodel" title="Permanent link">&para;</a></h3>
+
+
+  <div class="doc doc-object doc-class">
+
+<a id="matrix_admin_sdk.models.federation.DestinationModel"></a>
+    <div class="doc doc-contents first">
+
+      <p>Class representing a destination model.</p>
+
+<p><strong>Attributes:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>destination</code></td>
+        <td><code>str</code></td>
+        <td><p>Name of the remote server to federate</p></td>
+      </tr>
+      <tr>
+        <td><code>retry_last_ts</code></td>
+        <td><code>int</code></td>
+        <td><p>The last time Synapse tried and failed to reach the
+remote server, in ms. This is 0 if the last attempt to communicate
+with the remote server was successful</p></td>
+      </tr>
+      <tr>
+        <td><code>retry_interval</code></td>
+        <td><code>int</code></td>
+        <td><p>How long since the last time Synapse tried to reach
+the remote server before trying again, in ms. This is 0
+if no further retrying occuring</p></td>
+      </tr>
+      <tr>
+        <td><code>failure_ts</code></td>
+        <td><code>Optional[int]</code></td>
+        <td><p>(int|None): The first time Synapse tried and failed to reach
+the remote server, in ms. This is null if communication with the
+remote server has never failed.</p></td>
+      </tr>
+      <tr>
+        <td><code>last_successful_stream_ordering</code></td>
+        <td><code>Optional[int]</code></td>
+        <td><p>(int|None): The stream ordering of the
+most recent successfully-sent PDU to this destination, or null if this
+information has not been tracked yet.</p></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>matrix_admin_sdk/models/federation.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">DestinationModel</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Class representing a destination model.</span>
+<span class="sd">    Attributes:</span>
+<span class="sd">        destination (str): Name of the remote server to federate</span>
+<span class="sd">        retry_last_ts (int): The last time Synapse tried and failed to reach the</span>
+<span class="sd">            remote server, in ms. This is 0 if the last attempt to communicate</span>
+<span class="sd">            with the remote server was successful</span>
+<span class="sd">        retry_interval (int): How long since the last time Synapse tried to reach</span>
+<span class="sd">            the remote server before trying again, in ms. This is 0</span>
+<span class="sd">            if no further retrying occuring</span>
+<span class="sd">        failure_ts: (int|None): The first time Synapse tried and failed to reach</span>
+<span class="sd">            the remote server, in ms. This is null if communication with the</span>
+<span class="sd">            remote server has never failed.</span>
+<span class="sd">        last_successful_stream_ordering: (int|None): The stream ordering of the</span>
+<span class="sd">            most recent successfully-sent PDU to this destination, or null if this</span>
+<span class="sd">            information has not been tracked yet.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">destination</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">retry_last_ts</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">retry_interval</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">failure_ts</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">last_successful_stream_ordering</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+</code></pre></div>
+        </details>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+<h3 id="destinationroomsmodel">DestinationRoomsModel<a class="headerlink" href="#destinationroomsmodel" title="Permanent link">&para;</a></h3>
+
+
+  <div class="doc doc-object doc-class">
+
+<a id="matrix_admin_sdk.models.federation.DestinationRoomsModel"></a>
+    <div class="doc doc-contents first">
+
+      <p>A list of rooms in a destination.</p>
+
+<p><strong>Attributes:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>rooms</code></td>
+        <td><code>list[DestinationRoomModel]</code></td>
+        <td><p>An array of objects, each containing
+information about a room</p></td>
+      </tr>
+      <tr>
+        <td><code>total</code></td>
+        <td><code>int</code></td>
+        <td><p>Total number of destinations</p></td>
+      </tr>
+      <tr>
+        <td><code>next_token</code></td>
+        <td><code>int|None</code></td>
+        <td><p>Indication for pagination</p></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>matrix_admin_sdk/models/federation.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">DestinationRoomsModel</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A list of rooms in a destination.</span>
+<span class="sd">    Attributes:</span>
+<span class="sd">        rooms (list[DestinationRoomModel]): An array of objects, each containing</span>
+<span class="sd">            information about a room</span>
+<span class="sd">        total (int): Total number of destinations</span>
+<span class="sd">        next_token (int|None): Indication for pagination</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">rooms</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">DestinationRoomModel</span><span class="p">]</span>
+    <span class="n">total</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">next_token</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_dict</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="s2">&quot;DestinationRoomsModel&quot;</span><span class="p">:</span>
+        <span class="n">rooms</span> <span class="o">=</span> <span class="p">[</span><span class="n">DestinationRoomModel</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;rooms&quot;</span><span class="p">]]</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span>
+            <span class="n">rooms</span><span class="o">=</span><span class="n">rooms</span><span class="p">,</span>
+            <span class="n">total</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;total&quot;</span><span class="p">],</span>
+            <span class="n">next_token</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;next_token&quot;</span><span class="p">),</span>
+        <span class="p">)</span>
+</code></pre></div>
+        </details>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+<h3 id="destinationroommodel">DestinationRoomModel<a class="headerlink" href="#destinationroommodel" title="Permanent link">&para;</a></h3>
+
+
+  <div class="doc doc-object doc-class">
+
+<a id="matrix_admin_sdk.models.federation.DestinationRoomModel"></a>
+    <div class="doc doc-contents first">
+
+      <p>Class representing a destination room model.</p>
+
+<p><strong>Attributes:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>room_id</code></td>
+        <td><code>str</code></td>
+        <td><p>The ID of the room</p></td>
+      </tr>
+      <tr>
+        <td><code>stream_ordering</code></td>
+        <td><code>int</code></td>
+        <td><p>The stream ordering of the most recent
+successfully-sent PDU to this destination in this room</p></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>matrix_admin_sdk/models/federation.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">DestinationRoomModel</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Class representing a destination room model.</span>
+<span class="sd">    Attributes:</span>
+<span class="sd">        room_id (str): The ID of the room</span>
+<span class="sd">        stream_ordering (int): The stream ordering of the most recent</span>
+<span class="sd">            successfully-sent PDU to this destination in this room</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">room_id</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">stream_ordering</span><span class="p">:</span> <span class="nb">int</span>
+</code></pre></div>
+        </details>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../server/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Server" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Server
+            </div>
+          </div>
+        </a>
+      
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.5e67fbfe.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.c44cc438.min.js"></script>
+      
+    
+  </body>
+</html>
