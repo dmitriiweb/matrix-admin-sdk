@@ -1,4 +1,4 @@
-from matrix_admin_sdk.models.rooms import RoomsModel
+from matrix_admin_sdk.models.v1.rooms import RoomsModel
 
 
 ROOMS = {

@@ -6,7 +6,7 @@
 
 ## Models
 ### RenewAccountModel
-::: matrix_admin_sdk.models.account_validity.RenewAccountModel
+::: matrix_admin_sdk.models.v1.account_validity.RenewAccountModel
 
 ## Other
 ### OrderBy

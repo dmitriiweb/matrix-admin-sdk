@@ -6,12 +6,12 @@
 
 ## Models
 ### EventDetails
-::: matrix_admin_sdk.models.event_reports.EventDetails
+::: matrix_admin_sdk.models.v1.event_reports.EventDetails
 ### EventJson
-::: matrix_admin_sdk.models.event_reports.EventJson
+::: matrix_admin_sdk.models.v1.event_reports.EventJson
 ### EventContent
-::: matrix_admin_sdk.models.event_reports.EventContent
+::: matrix_admin_sdk.models.v1.event_reports.EventContent
 ### EventReports
-::: matrix_admin_sdk.models.event_reports.EventReports
+::: matrix_admin_sdk.models.v1.event_reports.EventReports
 ### EventReport
-::: matrix_admin_sdk.models.event_reports.EventReport
+::: matrix_admin_sdk.models.v1.event_reports.EventReport

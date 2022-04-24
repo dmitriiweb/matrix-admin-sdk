@@ -6,4 +6,4 @@
 
 ## Models
 ### DeleteLocalMediaModel
-::: matrix_admin_sdk.models.delete_local_media.DeleteLocalMediaModel
+::: matrix_admin_sdk.models.v1.delete_local_media.DeleteLocalMediaModel

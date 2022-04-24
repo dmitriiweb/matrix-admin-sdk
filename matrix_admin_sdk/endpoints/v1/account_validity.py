@@ -1,5 +1,5 @@
 from matrix_admin_sdk.endpoints import RequestMethods
-from matrix_admin_sdk.models.account_validity import RenewAccountModel
+from matrix_admin_sdk.models.v1.account_validity import RenewAccountModel
 
 from .endpoint import Endpoint
 

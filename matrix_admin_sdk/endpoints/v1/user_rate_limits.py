@@ -1,5 +1,5 @@
 from matrix_admin_sdk.endpoints import RequestMethods
-from matrix_admin_sdk.models.user_rate_limits import RateLimitsStatusModel
+from matrix_admin_sdk.models.v1.user_rate_limits import RateLimitsStatusModel
 
 from .endpoint import Endpoint
 

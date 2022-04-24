@@ -2,7 +2,7 @@ from enum import Enum
 from typing import Any, Dict, List, Optional
 
 from matrix_admin_sdk.endpoints import RequestMethods
-from matrix_admin_sdk.models.rooms import (
+from matrix_admin_sdk.models.v1.rooms import (
     BlockStatusModel,
     DeletedRoomModel,
     RoomMembersModel,

@@ -2,7 +2,7 @@ from enum import Enum
 from typing import Any, Dict, Optional
 
 from matrix_admin_sdk.endpoints import RequestMethods
-from matrix_admin_sdk.models.user import (
+from matrix_admin_sdk.models.v1.user import (
     CurrentSessionsModel,
     DeletedMediaModel,
     MediaListModel,

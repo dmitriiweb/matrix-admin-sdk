@@ -1,5 +1,5 @@
 from matrix_admin_sdk.endpoints import RequestMethods
-from matrix_admin_sdk.models.background_updates import EnabledModel, StatusModel
+from matrix_admin_sdk.models.v1.background_updates import EnabledModel, StatusModel
 
 from .endpoint import Endpoint
 

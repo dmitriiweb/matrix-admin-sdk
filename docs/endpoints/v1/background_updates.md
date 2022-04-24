@@ -6,8 +6,8 @@
 
 ## Models
 ### CurrentUpdate
-::: matrix_admin_sdk.models.background_updates.CurrentUpdate
+::: matrix_admin_sdk.models.v1.background_updates.CurrentUpdate
 ### StatusModel
-::: matrix_admin_sdk.models.background_updates.StatusModel
+::: matrix_admin_sdk.models.v1.background_updates.StatusModel
 ### EnabledModel
-::: matrix_admin_sdk.models.background_updates.EnabledModel
+::: matrix_admin_sdk.models.v1.background_updates.EnabledModel

@@ -6,17 +6,17 @@
 
 ## Models
 ### RoomsModel
-::: matrix_admin_sdk.models.rooms.RoomsModel
+::: matrix_admin_sdk.models.v1.rooms.RoomsModel
 ### RoomModel
-::: matrix_admin_sdk.models.rooms.RoomModel
+::: matrix_admin_sdk.models.v1.rooms.RoomModel
 ### RoomMembersModel
-::: matrix_admin_sdk.models.rooms.RoomMembersModel
+::: matrix_admin_sdk.models.v1.rooms.RoomMembersModel
 ### RoomStateModel
-::: matrix_admin_sdk.models.rooms.RoomStateModel
+::: matrix_admin_sdk.models.v1.rooms.RoomStateModel
 ### BlockStatusModel
-::: matrix_admin_sdk.models.rooms.BlockStatusModel
+::: matrix_admin_sdk.models.v1.rooms.BlockStatusModel
 ### DeletedRoomModel
-::: matrix_admin_sdk.models.rooms.DeletedRoomModel
+::: matrix_admin_sdk.models.v1.rooms.DeletedRoomModel
 
 ## Other
 ### OrderBy

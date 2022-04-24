@@ -1,5 +1,5 @@
 from matrix_admin_sdk.endpoints import RequestMethods
-from matrix_admin_sdk.models.server import ServerVersionModel
+from matrix_admin_sdk.models.v1.server import ServerVersionModel
 
 from .endpoint import Endpoint
 

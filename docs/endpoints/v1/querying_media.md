@@ -6,4 +6,4 @@
 
 ## Models
 ### QueryingMediaModel
-::: matrix_admin_sdk.models.querying_media.QueryingMediaModel
+::: matrix_admin_sdk.models.v1.querying_media.QueryingMediaModel

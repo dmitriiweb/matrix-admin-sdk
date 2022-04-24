@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from typing import List
 
-from .base_model import BaseModel
+from matrix_admin_sdk.models.base_model import BaseModel
 
 
 @dataclass
