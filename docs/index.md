@@ -56,5 +56,6 @@ if __name__ == "__main__":
 - [User Rate Limits](endpoints/v1/user_rate_limits.md#User Rate Limits)
 - [Server](endpoints/v1/server.md#Server)
 - [Federation](endpoints/v1/federation.md#Federation)
-- 
+ 
 #### v2
+- [Users](endpoints/v2/users.md#Users)
