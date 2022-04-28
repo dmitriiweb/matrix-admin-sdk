@@ -2,7 +2,7 @@ from enum import Enum
 from typing import Optional
 
 from matrix_admin_sdk.endpoints import RequestMethods
-from matrix_admin_sdk.models.v2.users import UsersModel
+from matrix_admin_sdk.models.v2.users import UserDetailsModel, UsersModel
 
 from .endpoint import Endpoint
 
@@ -60,4 +60,18 @@ class Users(Endpoint):
         }
         result = await self.request(RequestMethods.GET, url, params=params)
         res: UsersModel = UsersModel.from_dict(result)
+        return res
+
+    async def query_user_account(self, user_id: str) -> UserDetailsModel:
+        """
+        This API returns information about a specific user account.
+        Args:
+            user_id: fully-qualified user id: for example, @user:server.com
+
+        Returns: UserDetailsModel
+
+        """
+        url = self.url(f"users/{user_id}")
+        result = await self.request(RequestMethods.GET, url)
+        res: UserDetailsModel = UserDetailsModel.from_dict(result)
         return res
