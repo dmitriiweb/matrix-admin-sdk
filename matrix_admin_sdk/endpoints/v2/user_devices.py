@@ -1,7 +1,7 @@
 from typing import List
 
 from matrix_admin_sdk.endpoints import RequestMethods
-from matrix_admin_sdk.models.v2.user_devices import UserDevicesModel
+from matrix_admin_sdk.models.v2.user_devices import UserDeviceModel, UserDevicesModel
 
 from .endpoint import Endpoint
 
@@ -45,3 +45,17 @@ class UserDevices(Endpoint):
         url = self.url(f"users/{self.user_id}/delete_devices")
         data = {"devices": devices}
         await self.request(RequestMethods.POST, url, json=data)
+
+    async def show(self, device_id: str) -> UserDeviceModel:
+        """
+        Gets information on a single device, by device_id for a specific user_id.
+        Args:
+            device_id: The device to retrieve.
+
+        Returns:
+
+        """
+        url = self.url(f"users/{self.user_id}/devices/{device_id}")
+        result = await self.request(RequestMethods.GET, url)
+        res: UserDeviceModel = UserDeviceModel.from_dict(result)
+        return res
