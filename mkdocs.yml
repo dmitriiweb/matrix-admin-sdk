@@ -79,3 +79,4 @@ nav:
       - v2:
           - Users: endpoints/v2/users.md
           - User Devices: endpoints/v2/user_devices.md
+          - Rooms: endpoints/v2/rooms.md

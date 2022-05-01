@@ -60,3 +60,4 @@ if __name__ == "__main__":
 #### v2
 - [Users](endpoints/v2/users.md#Users)
 - [User Devices](endpoints/v2/users_devices.md#User Devices)
+- [Rooms](endpoints/v2/rooms.md#Rooms)
