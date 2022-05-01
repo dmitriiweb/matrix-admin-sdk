@@ -38,7 +38,7 @@ class User(Endpoint):
         Initialize User endpoint
         Args:
             user_id: fully-qualified user id: for example, @user:server.com
-            **kwargs: key
+            **kwargs: keyword arguments to pass to Endpoint
 
         Returns: None
 
