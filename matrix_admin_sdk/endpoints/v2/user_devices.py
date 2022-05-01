@@ -1,3 +1,5 @@
+from typing import List
+
 from matrix_admin_sdk.endpoints import RequestMethods
 from matrix_admin_sdk.models.v2.user_devices import UserDevicesModel
 
@@ -29,3 +31,17 @@ class UserDevices(Endpoint):
         result = await self.request(RequestMethods.GET, url)
         res: UserDevicesModel = UserDevicesModel.from_dict(result)
         return res
+
+    async def delete(self, devices: List[str]) -> None:
+        """
+        Deletes the given devices for a specific user_id, and invalidates any
+        access token associated with them.
+        Args:
+            devices: The list of device IDs to delete.
+
+        Returns: None
+
+        """
+        url = self.url(f"users/{self.user_id}/delete_devices")
+        data = {"devices": devices}
+        await self.request(RequestMethods.POST, url, json=data)
