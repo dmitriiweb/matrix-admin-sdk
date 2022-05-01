@@ -32,7 +32,7 @@ class UserDevices(Endpoint):
         res: UserDevicesModel = UserDevicesModel.from_dict(result)
         return res
 
-    async def delete(self, devices: List[str]) -> None:
+    async def delete_multiple(self, devices: List[str]) -> None:
         """
         Deletes the given devices for a specific user_id, and invalidates any
         access token associated with them.
@@ -59,3 +59,31 @@ class UserDevices(Endpoint):
         result = await self.request(RequestMethods.GET, url)
         res: UserDeviceModel = UserDeviceModel.from_dict(result)
         return res
+
+    async def update(self, device_id: str, display_name: str) -> None:
+        """
+        Updates the metadata on the given device_id for a specific user_id.
+        Args:
+            device_id: The device to update.
+            display_name: The new display name for this device. If not given,
+                the display name is unchanged.
+
+        Returns: None
+
+        """
+        url = self.url(f"users/{self.user_id}/devices/{device_id}")
+        data = {"display_name": display_name}
+        await self.request(RequestMethods.PUT, url, json=data)
+
+    async def delete(self, device_id: str) -> None:
+        """
+        Deletes the given device_id for a specific user_id, and invalidates any
+            access token associated with it.
+        Args:
+            device_id: The device to delete.
+
+        Returns: None
+
+        """
+        url = self.url(f"users/{self.user_id}/devices/{device_id}")
+        await self.request(RequestMethods.DELETE, url)
