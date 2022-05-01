@@ -6,4 +6,4 @@
 
 ## Models
 ### NewUserModel
-::: matrix_admin_sdk.models.register_user.NewUserModel
+::: matrix_admin_sdk.models.v1.register_user.NewUserModel

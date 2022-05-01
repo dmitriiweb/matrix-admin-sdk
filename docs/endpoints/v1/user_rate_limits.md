@@ -6,4 +6,4 @@
 
 ## Models
 ### RateLimitsStatusModel
-::: matrix_admin_sdk.models.user_rate_limits.RateLimitsStatusModel
+::: matrix_admin_sdk.models.v1.user_rate_limits.RateLimitsStatusModel

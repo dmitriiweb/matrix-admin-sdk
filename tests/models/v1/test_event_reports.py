@@ -1,4 +1,4 @@
-from matrix_admin_sdk.models.event_reports import EventDetails, EventReports
+from matrix_admin_sdk.models.v1.event_reports import EventDetails, EventReports
 
 
 event_reports = {

@@ -6,10 +6,10 @@
 
 ## Models
 ### DestinationsModel
-::: matrix_admin_sdk.models.federation.DestinationsModel
+::: matrix_admin_sdk.models.v1.federation.DestinationsModel
 ### DestinationModel
-::: matrix_admin_sdk.models.federation.DestinationModel
+::: matrix_admin_sdk.models.v1.federation.DestinationModel
 ### DestinationRoomsModel
-::: matrix_admin_sdk.models.federation.DestinationRoomsModel
+::: matrix_admin_sdk.models.v1.federation.DestinationRoomsModel
 ### DestinationRoomModel
-::: matrix_admin_sdk.models.federation.DestinationRoomModel
+::: matrix_admin_sdk.models.v1.federation.DestinationRoomModel

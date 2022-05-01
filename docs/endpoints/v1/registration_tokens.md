@@ -6,4 +6,4 @@
 
 ## Models
 ### RegistrationTokensModel
-::: matrix_admin_sdk.models.registration_tokens.RegistrationTokensModel
+::: matrix_admin_sdk.models.v1.registration_tokens.RegistrationTokensModel

@@ -6,4 +6,4 @@
 
 ## Models
 ### ServerVersionModel
-::: matrix_admin_sdk.models.server.ServerVersionModel
+::: matrix_admin_sdk.models.v1.server.ServerVersionModel

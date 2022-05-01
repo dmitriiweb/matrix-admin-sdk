@@ -2,7 +2,7 @@ from enum import Enum
 from typing import Any, Dict, Optional
 
 from matrix_admin_sdk.endpoints import RequestMethods
-from matrix_admin_sdk.models.user import (
+from matrix_admin_sdk.models.v1.user import (
     CurrentSessionsModel,
     DeletedMediaModel,
     MediaListModel,
@@ -38,7 +38,7 @@ class User(Endpoint):
         Initialize User endpoint
         Args:
             user_id: fully-qualified user id: for example, @user:server.com
-            **kwargs: key
+            **kwargs: keyword arguments to pass to Endpoint
 
         Returns: None
 

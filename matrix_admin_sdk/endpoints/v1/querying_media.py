@@ -1,5 +1,5 @@
 from matrix_admin_sdk.endpoints import RequestMethods
-from matrix_admin_sdk.models.querying_media import QueryingMediaModel
+from matrix_admin_sdk.models.v1.querying_media import QueryingMediaModel
 
 from .endpoint import Endpoint
 

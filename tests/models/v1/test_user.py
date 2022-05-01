@@ -1,4 +1,4 @@
-from matrix_admin_sdk.models.user import CurrentSessionsModel, PushersModel
+from matrix_admin_sdk.models.v1.user import CurrentSessionsModel, PushersModel
 
 
 PUSHERS = {

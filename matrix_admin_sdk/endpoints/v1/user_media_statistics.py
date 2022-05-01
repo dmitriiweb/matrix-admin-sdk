@@ -2,7 +2,7 @@ from enum import Enum
 from typing import Optional
 
 from matrix_admin_sdk.endpoints import RequestMethods
-from matrix_admin_sdk.models.user_media_statistics import UsersMediaStatisticsModel
+from matrix_admin_sdk.models.v1.user_media_statistics import UsersMediaStatisticsModel
 
 from .endpoint import Endpoint
 
