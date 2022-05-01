@@ -1,4 +1,4 @@
-from matrix_admin_sdk.models.background_updates import StatusModel
+from matrix_admin_sdk.models.v1.background_updates import StatusModel
 
 
 def test_status_model():

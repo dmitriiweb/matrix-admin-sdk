@@ -6,4 +6,4 @@
 
 ## Models
 ### ForwardExtremitiesModel
-::: matrix_admin_sdk.models.forward_extremities.ForwardExtremitiesModel
+::: matrix_admin_sdk.models.v1.forward_extremities.ForwardExtremitiesModel

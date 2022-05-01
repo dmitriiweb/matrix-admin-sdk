@@ -76,3 +76,7 @@ nav:
           - User Rate Limits: endpoints/v1/user_rate_limits.md
           - Server: endpoints/v1/server.md
           - Federation: endpoints/v1/federation.md
+      - v2:
+          - Users: endpoints/v2/users.md
+          - User Devices: endpoints/v2/user_devices.md
+          - Rooms: endpoints/v2/rooms.md

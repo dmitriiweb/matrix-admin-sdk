@@ -1,8 +1,8 @@
 from typing import Optional
 
 from matrix_admin_sdk.endpoints import RequestMethods
-from matrix_admin_sdk.models.event_reports import EventDetails
-from matrix_admin_sdk.models.event_reports import EventReports as EventReportsModel
+from matrix_admin_sdk.models.v1.event_reports import EventDetails
+from matrix_admin_sdk.models.v1.event_reports import EventReports as EventReportsModel
 
 from .endpoint import Endpoint
 

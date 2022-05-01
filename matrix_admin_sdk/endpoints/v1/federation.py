@@ -2,7 +2,7 @@ from enum import Enum
 from typing import Optional
 
 from matrix_admin_sdk.endpoints import RequestMethods
-from matrix_admin_sdk.models.federation import (
+from matrix_admin_sdk.models.v1.federation import (
     DestinationModel,
     DestinationRoomsModel,
     DestinationsModel,

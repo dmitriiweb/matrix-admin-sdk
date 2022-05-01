@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 
-from .base_model import BaseModel
+from matrix_admin_sdk.models.base_model import BaseModel
 
 
 @dataclass
